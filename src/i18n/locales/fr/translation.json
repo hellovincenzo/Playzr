@@ -1,0 +1,10 @@
+{
+  "welcome": "Bienvenu",
+  "pages": {
+    "login": {
+      "input1": "LOGIN",
+      "input2": "MOT DE PASSE",
+      "button": "COMMENCER À JOUER"
+    }
+  }
+}
