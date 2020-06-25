@@ -5,9 +5,16 @@ export const placeholderStyle = {
   fontSize: 16,
 };
 
-export const loginText = {
+export const textBtnBordered = {
   fontFamily: 'spartan-medium',
   fontSize: 20,
   textAlign: 'center',
   color: colors.white,
+};
+
+export const textBtn = {
+  fontFamily: 'spartan-medium',
+  fontSize: 16,
+  textAlign: 'center',
+  color: colors.black,
 };

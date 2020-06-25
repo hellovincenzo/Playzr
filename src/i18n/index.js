@@ -16,8 +16,8 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     resources,
-    lng: 'en',
-    fallbackLng: 'en',
+    lng: 'fr',
+    fallbackLng: 'fr',
     debug: true,
     interpolation: {
       escapeValue: false,

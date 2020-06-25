@@ -4,7 +4,10 @@
     "login": {
       "input1": "LOGIN",
       "input2": "MOT DE PASSE",
-      "button": "COMMENCER À JOUER"
+      "text1": "Mot de passe oublié",
+      "button1": "Mot de passe oublié",
+      "button2": "COMMENCER À JOUER",
+      "button3": "Créer un compte"
     }
   }
 }

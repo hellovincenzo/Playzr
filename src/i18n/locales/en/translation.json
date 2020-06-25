@@ -4,7 +4,9 @@
     "login": {
       "input1": "LOGIN",
       "input2": "PASSWORD",
-      "button": "START PLAYING"
+      "button1": "Forgot password",
+      "button2": "START PLAYING",
+      "button3": "Create an account"
     }
   }
 }

@@ -2,22 +2,25 @@ import React, { useState } from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 
-import { AppContainer } from './src/navigations/AppContainer';
 import { fonts } from './src/styles/fonts';
+import { AppContainer } from './src/navigations/AppContainer';
 import './src/i18n';
 
 const App = () => {
-  const fetchFonts = () => {
-    return Font.loadAsync(fonts);
-  };
-
   const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  const fetchFonts = async () => {
+    return await Font.loadAsync(fonts);
+  };
 
   if (!fontsLoaded) {
     return (
-      <AppLoading startAsync={fetchFonts} onFinish={() => setFontsLoaded(true)} />
-    )
-  } 
+      <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setFontsLoaded(true)}
+      />
+    );
+  }
 
   return <AppContainer />;
 };

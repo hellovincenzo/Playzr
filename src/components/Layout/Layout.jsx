@@ -18,7 +18,7 @@ const Layout = ({ children, backgroundImage }) => {
 
   return (
     <DismissKeyboard>
-      <KeyboardAvoidingView behavior={behavior} style={styles.container}>
+      <KeyboardAvoidingView behavior={null} style={styles.container}>
         <Tag source={backgroundImage} style={styles.background}>
           {!backgroundImage ? (
             children
