@@ -13,7 +13,6 @@ const Input = ({ placeholder, value, onChange, secureTextEntry }) => (
     secureTextEntry={secureTextEntry}
   />
 );
-
 const styles = StyleSheet.create({
   input: {
     ...InputStyles.normal,

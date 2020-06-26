@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Provider } from 'react-redux';
 
 import { store } from '../store';
-import { Login, Signup } from '../screens';
+import { routes } from '~/routes';
 
 const AppContainer = () => {
   const Stack = createStackNavigator();
@@ -13,12 +13,14 @@ const AppContainer = () => {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen name="Signup" component={Signup} />
+          {routes.map((route) => (
+            <Stack.Screen
+              key={route.name}
+              name={route.name}
+              component={route.component}
+              options={route.options}
+            />
+          ))}
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

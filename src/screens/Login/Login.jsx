@@ -1,48 +1,41 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Image, StyleSheet, Text } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { Image, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 
-import { baseURL } from '~/API/constant';
+// COMPONENTS
 import { Row, Column, Input, Btn } from '~/components/common';
 import { Layout } from '~/components/Layout/Layout';
+
+// STYLES
 import { Assets } from '~/styles';
+
+// ASSETS
 import backgroundImage from '~/assets/background.png';
 import logo from '~/assets/logo.png';
 
+// API
+import { auth } from '~/API';
+
 const Login = ({ navigation }) => {
-  const { welcome } = useSelector((state) => state.welcome);
   const { t } = useTranslation();
+
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [token, setToken] = useState('');
 
-  const handleEmail = (email) => setEmail(email);
+  const handleEmail = (eml) => setEmail(eml);
 
-  const handlePassword = (password) => setPassword(password);
+  const handlePassword = (pwd) => setPassword(pwd);
 
-  const auth = (email, password) => {
-    axios
-      .post(`${baseURL}/login`, {
-        email,
-        password,
-      })
-      .then((response) => {
-        if (response) {
-          console.log(response.data);
-        }
-      })
-      .catch((error) => console.log(error));
-  };
+  const signIn = () => auth(email, password, dispatch);
 
   return (
     <Layout backgroundImage={backgroundImage}>
       <Row>
         <Column>
           <Image style={styles.logo} source={logo} />
-          <Text>{token}</Text>
         </Column>
       </Row>
       <Row>
@@ -60,7 +53,7 @@ const Login = ({ navigation }) => {
           />
           <Btn
             text={t('translation:pages.login.button1')}
-            onPress={() => auth(email, password)}
+            onPress={null}
             borderBottom
           />
         </Column>
@@ -69,15 +62,12 @@ const Login = ({ navigation }) => {
         <Column positionY="flex-start">
           <Btn
             text={t('translation:pages.login.button2')}
-            onPress={() => auth(email, password)}
+            onPress={signIn}
             bordered
           />
         </Column>
         <Column positionY="flex-start">
-          <Btn
-            text={t('translation:pages.login.button3')}
-            onPress={() => navigation.navigate('Signup')}
-          />
+          <Btn text={t('translation:pages.login.button3')} onPress={null} />
         </Column>
       </Row>
     </Layout>
