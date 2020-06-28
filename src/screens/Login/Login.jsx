@@ -19,6 +19,7 @@ import { auth } from '~/API';
 
 const Login = ({ navigation }) => {
   const { t } = useTranslation();
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -29,7 +30,10 @@ const Login = ({ navigation }) => {
 
   const handlePassword = (pwd) => setPassword(pwd);
 
-  const signIn = () => auth(email, password, dispatch);
+  const signIn = () => {
+    setIsLoading(true);
+    auth(email, password, dispatch);
+  };
 
   return (
     <Layout backgroundImage={backgroundImage}>
@@ -55,6 +59,7 @@ const Login = ({ navigation }) => {
             text={t('translation:pages.login.button1')}
             onPress={null}
             borderBottom
+            isLoading={isLoading}
           />
         </Column>
       </Row>
@@ -63,11 +68,16 @@ const Login = ({ navigation }) => {
           <Btn
             text={t('translation:pages.login.button2')}
             onPress={signIn}
+            isLoading={isLoading}
             bordered
           />
         </Column>
         <Column positionY="flex-start">
-          <Btn text={t('translation:pages.login.button3')} onPress={null} />
+          <Btn
+            text={t('translation:pages.login.button3')}
+            onPress={() => navigation.navigate('Signup')}
+            isLoading={isLoading}
+          />
         </Column>
       </Row>
     </Layout>

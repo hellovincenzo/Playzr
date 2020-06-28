@@ -1,5 +1,4 @@
 import { AsyncStorage } from 'react-native';
-import axios from 'axios';
 
 export const storeData = async (key, value) => {
   try {
@@ -10,14 +9,14 @@ export const storeData = async (key, value) => {
 };
 
 export const retrieveData = async (key) => {
+  let value = null;
   try {
-    const value = await AsyncStorage.getItem(key);
-    if (value !== null) {
-      console.log(value);
-    }
+    value = await AsyncStorage.getItem(key);
   } catch (error) {
     // Error retrieving data
+    value = error;
   }
+  return value;
 };
 
 export const removeData = async (key) => {
@@ -28,7 +27,10 @@ export const removeData = async (key) => {
   }
 };
 
-export const callAPI = async (method, route, data) =>
-  axios[method](route, data)
-    .then((response) => response)
-    .catch((error) => error);
+export const clearAllData = async () => {
+  try {
+    await AsyncStorage.clear();
+  } catch (error) {
+    console.log(error);
+  }
+};

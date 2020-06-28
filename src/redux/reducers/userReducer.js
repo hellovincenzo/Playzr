@@ -4,6 +4,7 @@ const init = {
   user: {
     isSignIn: false,
     token: '',
+    id: '',
   },
 };
 
@@ -15,6 +16,7 @@ const userReducer = (state = init, action) => {
         user: {
           isSignIn: true,
           token: action.token,
+          id: action.id,
         },
       };
 
@@ -24,6 +26,7 @@ const userReducer = (state = init, action) => {
         user: {
           isSignIn: false,
           token: '',
+          id: '',
         },
       };
 

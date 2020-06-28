@@ -15,6 +15,11 @@ export const bordered = {
   borderRadius: 5,
 };
 
+export const borderedLoading = {
+  ...bordered,
+  backgroundColor: colors.black02,
+};
+
 export const borderBottom = {
   ...btn,
   borderWidth: 1,

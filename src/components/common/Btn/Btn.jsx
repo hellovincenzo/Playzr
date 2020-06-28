@@ -1,14 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableHighlight, Text, StyleSheet } from 'react-native';
+import {
+  TouchableHighlight,
+  Text,
+  ActivityIndicator,
+  StyleSheet,
+} from 'react-native';
 
 import { BtnStyles, Typo } from '~/styles';
 
-const Btn = ({ text, onPress, bordered, borderBottom }) => {
+const Btn = ({ text, onPress, isLoading, bordered, borderBottom }) => {
   let btnStyles;
 
   if (bordered) {
     btnStyles = styles.btnBordered;
+    if (isLoading) {
+      btnStyles = styles.btnBorderedLoading;
+    }
   } else if (borderBottom) {
     btnStyles = styles.btnBorderedBottom;
   } else {
@@ -16,15 +24,21 @@ const Btn = ({ text, onPress, bordered, borderBottom }) => {
   }
 
   const btnText = bordered ? styles.textBordered : styles.text;
+  const btnTextLoading = isLoading ? styles.textLoading : btnText;
 
   return (
     <TouchableHighlight
       style={btnStyles}
       onPress={onPress}
+      disabled={isLoading}
       activeOpacity={0.6}
       underlayColor="transparent"
     >
-      <Text style={btnText}>{text}</Text>
+      {isLoading && bordered ? (
+        <ActivityIndicator />
+      ) : (
+        <Text style={btnTextLoading}>{text}</Text>
+      )}
     </TouchableHighlight>
   );
 };
@@ -36,11 +50,17 @@ const styles = StyleSheet.create({
   btnBordered: {
     ...BtnStyles.bordered,
   },
+  btnBorderedLoading: {
+    ...BtnStyles.borderedLoading,
+  },
   btnBorderedBottom: {
     ...BtnStyles.borderBottom,
   },
   text: {
     ...Typo.textBtn,
+  },
+  textLoading: {
+    ...Typo.textBtnLoading,
   },
   textBordered: {
     ...Typo.textBtnBordered,
@@ -50,6 +70,7 @@ const styles = StyleSheet.create({
 Btn.defaultProps = {
   text: 'Press Here',
   onPress: () => null,
+  isLoading: false,
   bordered: false,
   borderBottom: false,
 };
@@ -57,6 +78,7 @@ Btn.defaultProps = {
 Btn.propTypes = {
   text: PropTypes.string,
   onPress: PropTypes.func,
+  isLoading: PropTypes.bool,
   bordered: PropTypes.bool,
   borderBottom: PropTypes.bool,
 };

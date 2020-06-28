@@ -18,3 +18,8 @@ export const textBtn = {
   textAlign: 'center',
   color: colors.black,
 };
+
+export const textBtnLoading = {
+  ...textBtn,
+  color: colors.black02,
+};

@@ -2,11 +2,15 @@
   "welcome": "Welcome",
   "pages": {
     "login": {
+      "title": "Login",
       "input1": "LOGIN",
       "input2": "PASSWORD",
       "button1": "Forgot password",
       "button2": "START PLAYING",
       "button3": "Create an account"
+    },
+    "dashboard": {
+      "title": "PLAYZR."
     }
   }
 }
