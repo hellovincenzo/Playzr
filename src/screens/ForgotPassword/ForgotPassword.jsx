@@ -4,14 +4,14 @@ import { Text } from 'react-native';
 import { Row, Column } from '~/components/common';
 import { Layout } from '~/components/Layout/Layout';
 
-const Signup = () => (
+const ForgotPassword = () => (
   <Layout>
     <Row>
       <Column>
-        <Text>Signup</Text>
+        <Text>Forgot Password</Text>
       </Column>
     </Row>
   </Layout>
 );
 
-export { Signup };
+export { ForgotPassword };

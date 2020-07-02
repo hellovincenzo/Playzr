@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Image, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
@@ -31,7 +31,7 @@ const Login = ({ navigation }) => {
   const handlePassword = (pwd) => setPassword(pwd);
 
   const signIn = () => {
-    setIsLoading(true);
+    setIsLoading(!isLoading);
     auth(email, password, dispatch);
   };
 
@@ -57,7 +57,7 @@ const Login = ({ navigation }) => {
           />
           <Btn
             text={t('translation:pages.login.button1')}
-            onPress={null}
+            onPress={() => navigation.navigate('Password')}
             borderBottom
             isLoading={isLoading}
           />

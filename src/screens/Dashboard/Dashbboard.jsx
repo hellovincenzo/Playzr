@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Image, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -9,11 +9,10 @@ import { Row, Column, Btn } from '~/components/common';
 import { Layout } from '~/components/Layout/Layout';
 
 // STYLES
-import { Assets } from '~/styles';
+import { Assets, Colors } from '~/styles';
 
 // ASSETS
 import fondplay from '~/assets/fondplay.png';
-import { clearAllData } from '~/helpers';
 import { SIGN_OUT } from '~/redux/types/userTypes';
 // API
 
@@ -22,11 +21,14 @@ const Dashboard = ({ navigation }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const signOut = ({ navigation }) => dispatch({ type: SIGN_OUT });
+  const signOut = () => dispatch({ type: SIGN_OUT });
 
   return (
     <Layout backgroundImage={fondplay}>
-      <Row>
+      <Row backgroundColor={Colors.colors.primary}>
+        <Column></Column>
+      </Row>
+      <Row flex={4}>
         <Column>
           <Btn
             text="Open Drawer"

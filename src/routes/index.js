@@ -1,4 +1,7 @@
-import { Login, Signup, Dashboard } from '~/screens';
+import { Login, Signup, ForgotPassword, Dashboard } from '~/screens';
+import { Colors } from '~/styles';
+
+import { OptionsHeader } from './OptionsHeader';
 
 export const routes = {
   unauthorize: [
@@ -17,8 +20,16 @@ export const routes = {
       component: Signup,
       options(t) {
         return {
-          title: 'translation:pages.login.title',
-          headerShown: false,
+          title: t('translation:pages.signup.title'),
+        };
+      },
+    },
+    {
+      name: 'Password',
+      component: ForgotPassword,
+      options(t) {
+        return {
+          title: t('translation:pages.password.title'),
         };
       },
     },
@@ -27,11 +38,7 @@ export const routes = {
     {
       name: 'Dashboard',
       component: Dashboard,
-      options(t) {
-        return {
-          title: t('translation:pages.dashboard.title'),
-        };
-      },
+      options: (t) => OptionsHeader(t).Dashboard,
     },
   ],
 };

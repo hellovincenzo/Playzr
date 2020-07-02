@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { Playzr } from './Playzr';
+import { AppPlayzr } from './AppPlayzr';
 
 const AppContainer = () => (
   <NavigationContainer>
-    <Playzr />
+    <AppPlayzr />
   </NavigationContainer>
 );
 

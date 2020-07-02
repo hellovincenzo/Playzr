@@ -5,10 +5,15 @@
       "title": "Connexion",
       "input1": "LOGIN",
       "input2": "MOT DE PASSE",
-      "text1": "Mot de passe oublié",
       "button1": "Mot de passe oublié",
       "button2": "COMMENCER À JOUER",
       "button3": "Créer un compte"
+    },
+    "signup": {
+      "title": "Créer Un Compte"
+    },
+    "password": {
+      "title": "Nouveau Mot De Passe"
     },
     "dashboard": {
       "title": "PLAYZR."

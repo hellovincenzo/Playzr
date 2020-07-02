@@ -9,6 +9,12 @@
       "button2": "START PLAYING",
       "button3": "Create an account"
     },
+    "signup": {
+      "title": "Signup"
+    },
+    "password": {
+      "title": "New Password"
+    },
     "dashboard": {
       "title": "PLAYZR."
     }

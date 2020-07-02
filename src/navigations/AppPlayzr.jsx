@@ -2,6 +2,6 @@ import React from 'react';
 
 import { DrawerNavigator } from './DrawerNavigator';
 
-const Playzr = () => <DrawerNavigator />;
+const AppPlayzr = () => <DrawerNavigator />;
 
-export { Playzr };
+export { AppPlayzr };
