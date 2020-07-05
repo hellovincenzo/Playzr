@@ -33,6 +33,17 @@ const OptionsHeader = (t) => {
         fontSize: 25,
       },
     },
+    Signup: {
+      title: t('translation:pages.signup.title'),
+      headerStyle: {
+        backgroundColor: Colors.colors.primary,
+        shadowOffset: { height: 0, width: 0 },
+      },
+      headerTitleStyle: {
+        fontFamily: 'spartan-bold',
+        fontSize: 15,
+      },
+    },
   };
 };
 

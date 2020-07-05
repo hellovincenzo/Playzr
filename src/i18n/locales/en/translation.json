@@ -10,10 +10,20 @@
       "button3": "Create an account"
     },
     "signup": {
-      "title": "Signup"
+      "title": "Signup",
+      "input1": "Firstname",
+      "input2": "Lastname",
+      "input3": "Game platform",
+      "input4": "Game username",
+      "input5": "Password",
+      "input6": "Country",
+      "button1": "Create an account"
     },
     "password": {
-      "title": "New Password"
+      "title": "New Password",
+      "input1": "Nouveau mot de passe",
+      "input2": "Retaper mot de passe",
+      "button1": "Send"
     },
     "dashboard": {
       "title": "PLAYZR."

@@ -12,13 +12,16 @@ import { DismissKeyboard } from '~/components/common';
 
 import { Assets } from '~/styles';
 
-const Layout = ({ children, backgroundImage }) => {
+const Layout = ({ children, backgroundImage, behave }) => {
   const Tag = backgroundImage ? ImageBackground : SafeAreaView;
   const behavior = Platform.OS == 'ios' ? 'padding' : 'height';
 
   return (
     <DismissKeyboard>
-      <KeyboardAvoidingView behavior={null} style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={behave ? behavior : null}
+        style={styles.container}
+      >
         <Tag source={backgroundImage} style={styles.background}>
           {!backgroundImage ? (
             children

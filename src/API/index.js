@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { route } from './constant';
-import { SIGN_IN } from '~/redux/types/userTypes';
+import { SIGN_IN, ERROR_CONNECTION } from '~/redux/types/userTypes';
 
 export const auth = (email, password, dispatch) =>
   axios
@@ -15,4 +15,10 @@ export const auth = (email, password, dispatch) =>
         }
       }
     })
-    .catch((error) => error);
+    .catch((error) =>
+      dispatch({
+        type: ERROR_CONNECTION,
+        title: 'Error Connection',
+        msg: 'Identifiant/Mot de passe incorrect!',
+      })
+    );

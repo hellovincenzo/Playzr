@@ -5,15 +5,25 @@
       "title": "Connexion",
       "input1": "LOGIN",
       "input2": "MOT DE PASSE",
-      "button1": "Mot de passe oublié",
+      "button1": "MOT DE PASSE OUBLIÉ",
       "button2": "COMMENCER À JOUER",
       "button3": "Créer un compte"
     },
     "signup": {
-      "title": "Créer Un Compte"
+      "title": "Créer Un Compte",
+      "input1": "Prénom",
+      "input2": "Nom",
+      "input3": "Platform de jeux",
+      "input4": "Pseudo",
+      "input5": "Mot de passe",
+      "input6": "Pays",
+      "button1": "CRÉER UN COMPTE"
     },
     "password": {
-      "title": "Nouveau Mot De Passe"
+      "title": "Nouveau Mot De Passe",
+      "input1": "Nouveau mot de passe",
+      "input2": "Retaper mot de passe",
+      "button1": "Envoyer"
     },
     "dashboard": {
       "title": "PLAYZR."

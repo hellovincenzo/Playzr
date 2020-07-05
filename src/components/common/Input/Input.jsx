@@ -4,13 +4,24 @@ import { TextInput, StyleSheet } from 'react-native';
 
 import { InputStyles, Typo } from '~/styles';
 
-const Input = ({ placeholder, value, onChange, secureTextEntry }) => (
+const Input = ({
+  placeholder,
+  value,
+  onChange,
+  secureTextEntry,
+  isLoading,
+  returnKeyType,
+  onSubmitEditing,
+}) => (
   <TextInput
     style={styles.input}
     placeholder={placeholder}
     value={value}
     onChangeText={onChange}
     secureTextEntry={secureTextEntry}
+    editable={!isLoading}
+    returnKeyType={returnKeyType}
+    onSubmitEditing={onSubmitEditing}
   />
 );
 const styles = StyleSheet.create({
@@ -25,6 +36,7 @@ Input.defaultProps = {
   value: '',
   onChange: () => null,
   secureTextEntry: false,
+  isLoading: false,
 };
 
 Input.propTypes = {
@@ -32,5 +44,7 @@ Input.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   secureTextEntry: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };
+
 export { Input };

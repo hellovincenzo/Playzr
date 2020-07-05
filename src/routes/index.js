@@ -1,5 +1,4 @@
-import { Login, Signup, ForgotPassword, Dashboard } from '~/screens';
-import { Colors } from '~/styles';
+import { Login, Signup, Password, Dashboard } from '~/screens';
 
 import { OptionsHeader } from './OptionsHeader';
 
@@ -18,15 +17,11 @@ export const routes = {
     {
       name: 'Signup',
       component: Signup,
-      options(t) {
-        return {
-          title: t('translation:pages.signup.title'),
-        };
-      },
+      options: (t) => OptionsHeader(t).Signup,
     },
     {
       name: 'Password',
-      component: ForgotPassword,
+      component: Password,
       options(t) {
         return {
           title: t('translation:pages.password.title'),

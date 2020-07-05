@@ -1,4 +1,4 @@
 export * from './Login/Login';
 export * from './Signup/Signup';
-export * from './ForgotPassword/ForgotPassword';
+export * from './Password/Password';
 export * from './Dashboard/Dashbboard';

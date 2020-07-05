@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Alert } from 'react-native';
 
 export const storeData = async (key, value) => {
   try {
@@ -34,3 +34,18 @@ export const clearAllData = async () => {
     console.log(error);
   }
 };
+
+export const alertMsg = (title, msg) =>
+  Alert.alert(
+    title,
+    msg,
+    [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      { text: 'OK', onPress: () => console.log('OK Pressed') },
+    ],
+    { cancelable: false }
+  );

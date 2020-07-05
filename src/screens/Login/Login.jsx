@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Image, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
@@ -19,7 +19,10 @@ import { auth } from '~/API';
 
 const Login = ({ navigation }) => {
   const { t } = useTranslation();
+
   const [isLoading, setIsLoading] = useState(false);
+
+  const inputRef = React.createRef(null);
 
   const dispatch = useDispatch();
 
@@ -29,6 +32,8 @@ const Login = ({ navigation }) => {
   const handleEmail = (eml) => setEmail(eml);
 
   const handlePassword = (pwd) => setPassword(pwd);
+
+  const handleNextInput = () => inputRef.current.focus();
 
   const signIn = () => {
     setIsLoading(!isLoading);
@@ -48,11 +53,15 @@ const Login = ({ navigation }) => {
             placeholder={t('translation:pages.login.input1')}
             value={email}
             onChange={handleEmail}
+            isLoading={isLoading}
           />
           <Input
             placeholder={t('translation:pages.login.input2')}
             value={password}
             onChange={handlePassword}
+            isLoading={isLoading}
+            returnKeyType="go"
+            onSubmitEditing={signIn}
             secureTextEntry
           />
           <Btn
