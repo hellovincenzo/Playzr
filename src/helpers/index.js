@@ -1,4 +1,7 @@
 import { AsyncStorage, Alert } from 'react-native';
+import i18n from 'i18next';
+
+import { LNG } from '~/redux/types/settingsTypes';
 
 export const storeData = async (key, value) => {
   try {
@@ -49,3 +52,8 @@ export const alertMsg = (title, msg) =>
     ],
     { cancelable: false }
   );
+
+export const changeLanguage = (lang, dispatch) => {
+  dispatch({ type: LNG, lng: lang });
+  return i18n.changeLanguage(lang);
+};

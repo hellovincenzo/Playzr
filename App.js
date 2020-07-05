@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 

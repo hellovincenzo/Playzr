@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 // COMPONENTS
 import { Row, Column, Input, Btn } from '~/components/common';
 import { Layout } from '~/components/Layout/Layout';
+import { ChangeLanguage } from '~/components/ChangeLanguage/ChangeLanguage';
 
 // STYLES
 import { Assets } from '~/styles';
@@ -13,8 +14,6 @@ import { Assets } from '~/styles';
 // ASSETS
 import backgroundImage from '~/assets/background.png';
 import logo from '~/assets/logo.png';
-import frenchFlag from '~/assets/france.png';
-import englishFlag from '~/assets/united-kingdom.png';
 
 // API
 import { auth } from '~/API';
@@ -23,8 +22,6 @@ const Login = ({ navigation }) => {
   const { t } = useTranslation();
 
   const [isLoading, setIsLoading] = useState(false);
-
-  const inputRef = React.createRef(null);
 
   const dispatch = useDispatch();
 
@@ -35,14 +32,10 @@ const Login = ({ navigation }) => {
 
   const handlePassword = (pwd) => setPassword(pwd);
 
-  const handleNextInput = () => inputRef.current.focus();
-
   const signIn = () => {
     setIsLoading(!isLoading);
     auth(email, password, dispatch);
   };
-
-  const test = () => alert('Hello');
 
   return (
     <Layout backgroundImage={backgroundImage}>
@@ -52,16 +45,7 @@ const Login = ({ navigation }) => {
         </Column>
       </Row>
       <Row>
-        <Column cols={2} positionX="flex-end">
-          <Btn>
-            <Image style={styles.flag} source={frenchFlag} onPress={test} />
-          </Btn>
-        </Column>
-        <Column cols={2} positionX="flex-start">
-          <Btn>
-            <Image style={styles.flag} source={englishFlag} />
-          </Btn>
-        </Column>
+        <ChangeLanguage />
         <Column>
           <Input
             placeholder={t('translation:pages.login.input1')}
