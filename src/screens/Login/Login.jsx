@@ -42,6 +42,8 @@ const Login = ({ navigation }) => {
     auth(email, password, dispatch);
   };
 
+  const test = () => alert('Hello');
+
   return (
     <Layout backgroundImage={backgroundImage}>
       <Row>
@@ -51,10 +53,14 @@ const Login = ({ navigation }) => {
       </Row>
       <Row>
         <Column cols={2} positionX="flex-end">
-          <Image style={styles.flag} source={frenchFlag} />
+          <Btn>
+            <Image style={styles.flag} source={frenchFlag} onPress={test} />
+          </Btn>
         </Column>
         <Column cols={2} positionX="flex-start">
-          <Image style={styles.flag} source={englishFlag} />
+          <Btn>
+            <Image style={styles.flag} source={englishFlag} />
+          </Btn>
         </Column>
         <Column>
           <Input

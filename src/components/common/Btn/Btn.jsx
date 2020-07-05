@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { node } from 'prop-types';
 import {
   TouchableHighlight,
   Text,
@@ -9,7 +9,14 @@ import {
 
 import { BtnStyles, Typo } from '~/styles';
 
-const Btn = ({ text, onPress, isLoading, bordered, borderBottom }) => {
+const Btn = ({
+  children,
+  text,
+  onPress,
+  isLoading,
+  bordered,
+  borderBottom,
+}) => {
   let btnStyles;
 
   if (bordered) {
@@ -36,8 +43,10 @@ const Btn = ({ text, onPress, isLoading, bordered, borderBottom }) => {
     >
       {isLoading && bordered ? (
         <ActivityIndicator />
-      ) : (
+      ) : text ? (
         <Text style={btnTextLoading}>{text}</Text>
+      ) : (
+        children
       )}
     </TouchableHighlight>
   );
@@ -68,7 +77,7 @@ const styles = StyleSheet.create({
 });
 
 Btn.defaultProps = {
-  text: 'Press Here',
+  text: '',
   onPress: () => null,
   isLoading: false,
   bordered: false,
