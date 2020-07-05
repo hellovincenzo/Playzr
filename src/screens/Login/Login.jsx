@@ -13,6 +13,8 @@ import { Assets } from '~/styles';
 // ASSETS
 import backgroundImage from '~/assets/background.png';
 import logo from '~/assets/logo.png';
+import frenchFlag from '~/assets/france.png';
+import englishFlag from '~/assets/united-kingdom.png';
 
 // API
 import { auth } from '~/API';
@@ -48,6 +50,12 @@ const Login = ({ navigation }) => {
         </Column>
       </Row>
       <Row>
+        <Column cols={2} positionX="flex-end">
+          <Image style={styles.flag} source={frenchFlag} />
+        </Column>
+        <Column cols={2} positionX="flex-start">
+          <Image style={styles.flag} source={englishFlag} />
+        </Column>
         <Column>
           <Input
             placeholder={t('translation:pages.login.input1')}
@@ -96,6 +104,9 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
   logo: {
     ...Assets.logo,
+  },
+  flag: {
+    ...Assets.flag,
   },
 });
 

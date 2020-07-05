@@ -24,6 +24,8 @@ const Column = ({ children, cols, positionY, positionX }) => {
 const styles = StyleSheet.create({
   column: {
     ...Grid.column,
+    // borderWidth: 1,
+    // borderColor: 'red',
   },
 });
 
