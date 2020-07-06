@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Image, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
@@ -21,7 +21,9 @@ import { auth } from '~/API';
 const Login = ({ navigation }) => {
   const { t } = useTranslation();
 
-  const [isLoading, setIsLoading] = useState(false);
+  const {
+    ui: { isLoading },
+  } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 
@@ -29,13 +31,9 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   const handleEmail = (eml) => setEmail(eml);
-
   const handlePassword = (pwd) => setPassword(pwd);
 
-  const signIn = () => {
-    setIsLoading(!isLoading);
-    auth(email, password, dispatch);
-  };
+  const signIn = () => auth(email, password, dispatch);
 
   return (
     <Layout backgroundImage={backgroundImage}>

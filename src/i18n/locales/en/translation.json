@@ -10,23 +10,29 @@
       "button3": "Create an account"
     },
     "signup": {
-      "title": "Signup",
-      "input1": "Firstname",
-      "input2": "Lastname",
-      "input3": "Game platform",
-      "input4": "Game username",
-      "input5": "Password",
-      "input6": "Country",
-      "button1": "Create an account"
+      "title": "SIGNUP",
+      "input1": "FIRST NAME",
+      "input2": "LASTNAME",
+      "input3": "GAME PLATFORM",
+      "input4": "USERNAME",
+      "input5": "PASSWORD",
+      "input6": "COUNTRY",
+      "button1": "CREATE AN ACCOUNT"
     },
     "password": {
-      "title": "New Password",
-      "input1": "Nouveau mot de passe",
-      "input2": "Retaper mot de passe",
-      "button1": "Send"
+      "title": "NEW PASSWORD",
+      "input1": "NEW PASSWORD",
+      "input2": "TYPE PASSWORD AGAIN",
+      "button1": "SEND"
     },
     "dashboard": {
       "title": "PLAYZR."
+    }
+  },
+  "error": {
+    "login": {
+      "title": "CONNECTION ERROR",
+      "text": "Email/Password incorrect!"
     }
   }
 }

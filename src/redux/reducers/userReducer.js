@@ -1,14 +1,10 @@
-import { SIGN_IN, SIGN_OUT, ERROR_CONNECTION } from '~/redux/types/userTypes';
+import { SIGN_IN, SIGN_OUT } from '~/redux/types/userTypes';
 
 const init = {
   user: {
     isSignIn: false,
     token: '',
     id: '',
-  },
-  error: {
-    title: '',
-    msg: '',
   },
 };
 
@@ -31,15 +27,6 @@ const userReducer = (state = init, action) => {
           isSignIn: false,
           token: '',
           id: '',
-        },
-      };
-
-    case ERROR_CONNECTION:
-      return {
-        ...state,
-        error: {
-          title: action.title,
-          msg: action.msg,
         },
       };
 

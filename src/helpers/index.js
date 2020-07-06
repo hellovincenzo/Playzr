@@ -2,6 +2,7 @@ import { AsyncStorage, Alert } from 'react-native';
 import i18n from 'i18next';
 
 import { LNG } from '~/redux/types/settingsTypes';
+import { CLEAR_MSG } from '~/redux/types/messageTypes';
 
 export const storeData = async (key, value) => {
   try {
@@ -38,17 +39,17 @@ export const clearAllData = async () => {
   }
 };
 
-export const alertMsg = (title, msg) =>
+export const alertMsg = (title, msg, dispatch) =>
   Alert.alert(
     title,
     msg,
     [
       {
         text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
+        onPress: () => dispatch({ type: CLEAR_MSG }),
         style: 'cancel',
       },
-      { text: 'OK', onPress: () => console.log('OK Pressed') },
+      { text: 'OK', onPress: () => dispatch({ type: CLEAR_MSG }) },
     ],
     { cancelable: false }
   );
