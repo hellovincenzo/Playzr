@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
@@ -19,7 +19,7 @@ const SuccessMessage = ({ title, text }) => {
 
   const dispatch = useDispatch();
 
-  const [translateY, setTranslateY] = useState(new Animated.Value(-100));
+  const translateY = useRef(new Animated.Value(-100)).current;
 
   const animatedStyles = {
     transform: [
@@ -29,38 +29,37 @@ const SuccessMessage = ({ title, text }) => {
     ],
   };
 
-  const showModal = () => {
+  const openMessagePopUp = () => {
     Animated.timing(translateY, {
       toValue: 0,
       duration: 700,
     }).start();
   };
 
-  const closeModal = () => {
-    dispatch({ type: CLEAR_MSG });
+  const closeMessagePopUp = () => {
     Animated.timing(translateY, {
       toValue: -100,
       duration: 700,
-    }).start();
+    }).start(() => dispatch({ type: CLEAR_MSG }));
   };
 
   useEffect(() => {
-    showModal();
-  }, [translateY]);
+    openMessagePopUp();
+  }, []);
 
   return (
     <Animated.View style={[styles.container, animatedStyles]}>
       <Row>
-        <Column cols={2} positionX={'flex-start'}>
-          <Text style={styles.title}>{t(title)}</Text>
-        </Column>
-        <Column cols={2} positionX={'flex-end'}>
+        <Column positionX="flex-end">
           <Entypo
             name="cross"
             size={30}
             color={Colors.colors.white}
-            onPress={closeModal}
+            onPress={closeMessagePopUp}
           />
+        </Column>
+        <Column>
+          <Text style={styles.title}>{t(title)}</Text>
         </Column>
         <Column>
           <Text style={styles.text}>{t(text)}</Text>

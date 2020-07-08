@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
@@ -15,6 +15,9 @@ import {
 // COMPONENTS
 import { DismissKeyboard } from '~/components/common';
 import { SuccessMessage } from '~/components/SuccessMessage/SuccessMessage';
+
+// REDUX TYPES
+import { CLEAR_MSG } from '~/redux/types/messageTypes';
 
 // STYLES
 import { Assets } from '~/styles';
@@ -35,6 +38,10 @@ const Layout = ({ children, backgroundImage }) => {
 
   const Tag = backgroundImage ? ImageBackground : SafeAreaView;
   const behavior = Platform.OS === 'ios' ? 'padding' : 'height';
+
+  useEffect(() => {
+    dispatch({ type: CLEAR_MSG });
+  }, []);
 
   return (
     <DismissKeyboard>

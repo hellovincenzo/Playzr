@@ -25,7 +25,9 @@ export const textBtnLoading = {
 };
 
 export const titleSuccessMessage = {
-  ...placeholderStyle,
+  fontFamily: 'spartan-bold',
+  fontSize: 16,
+  textAlign: 'center',
   color: colors.white,
   marginLeft: 15,
 };
