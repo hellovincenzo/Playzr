@@ -13,5 +13,5 @@ export const flag = {
   height: 38,
   marginRight: 20,
   marginLeft: 20,
-  marginBottom: 20,
+  marginBottom: 10,
 };

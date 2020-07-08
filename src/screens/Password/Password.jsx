@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { StyleSheet } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 // COMPONENTS
 import { Row, Column, Input, Btn } from '~/components/common';
 import { Layout } from '~/components/Layout/Layout';
 
-// STYLES
-import { Assets } from '~/styles';
-
 // ASSETS
 import backgroundImage from '~/assets/background.png';
 
 // API
+import { resetPassowrd } from '~/API';
 
 const Password = ({ navigation }) => {
   const { t } = useTranslation();
-  const [isLoading, setIsLoading] = useState(false);
+
+  const {
+    ui: { isLoading },
+  } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
   const handleEmail = (eml) => setEmail(eml);
-  const handlePassword = (pwd) => setPassword(pwd);
+
+  const requestNewPassword = () => resetPassowrd(email, dispatch);
 
   return (
     <Layout backgroundImage={backgroundImage} behave>
@@ -36,14 +36,9 @@ const Password = ({ navigation }) => {
             value={email}
             onChange={handleEmail}
           />
-          <Input
-            placeholder={t('translation:pages.password.input2')}
-            value={email}
-            onChange={handleEmail}
-          />
           <Btn
             text={t('translation:pages.password.button1')}
-            onPress={null}
+            onPress={requestNewPassword}
             isLoading={isLoading}
             bordered
           />

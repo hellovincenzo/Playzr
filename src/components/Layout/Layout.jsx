@@ -7,11 +7,14 @@ import {
   ImageBackground,
   StyleSheet,
   KeyboardAvoidingView,
+  ScrollView,
   Platform,
+  Dimensions,
 } from 'react-native';
 
 // COMPONENTS
 import { DismissKeyboard } from '~/components/common';
+import { SuccessMessage } from '~/components/SuccessMessage/SuccessMessage';
 
 // STYLES
 import { Assets } from '~/styles';
@@ -19,32 +22,34 @@ import { Assets } from '~/styles';
 // HELPERS
 import { alertMsg } from '~/helpers';
 
-const Layout = ({ children, backgroundImage, behave }) => {
+const Layout = ({ children, backgroundImage }) => {
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
+  const { error } = useSelector((state) => state.message);
+
   const {
-    error: { title, text },
+    success: { isSuccessShowing, title, text },
   } = useSelector((state) => state.message);
 
   const Tag = backgroundImage ? ImageBackground : SafeAreaView;
-  const behavior = Platform.OS == 'ios' ? 'padding' : 'height';
+  const behavior = Platform.OS === 'ios' ? 'padding' : 'height';
 
   return (
     <DismissKeyboard>
-      <KeyboardAvoidingView
-        behavior={behave ? behavior : null}
-        style={styles.container}
-      >
-        <Tag source={backgroundImage} style={styles.background}>
-          {title ? alertMsg(t(title), t(text), dispatch) : null}
-          {!backgroundImage ? (
-            children
-          ) : (
-            <SafeAreaView style={styles.container}>{children}</SafeAreaView>
-          )}
-        </Tag>
+      <KeyboardAvoidingView behavior={behavior} style={styles.container}>
+        <ScrollView>
+          <Tag source={backgroundImage} style={styles.background}>
+            {error.title
+              ? alertMsg(t(error.title), t(error.text), dispatch)
+              : null}
+            {isSuccessShowing ? (
+              <SuccessMessage title={title} text={text} />
+            ) : null}
+            {children}
+          </Tag>
+        </ScrollView>
       </KeyboardAvoidingView>
     </DismissKeyboard>
   );
@@ -53,7 +58,10 @@ const Layout = ({ children, backgroundImage, behave }) => {
 const styles = StyleSheet.create({
   background: {
     ...Assets.background,
+    width: Math.round(Dimensions.get('window').width),
+    height: Math.round(Dimensions.get('window').height),
   },
+
   container: {
     flex: 1,
   },

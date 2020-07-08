@@ -1,9 +1,9 @@
 import React from 'react';
-import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
+import { Ionicons, FontAwesome5, Entypo } from '@expo/vector-icons';
 
 import { Colors } from '~/styles';
 
-const OptionsHeader = (t) => {
+const OptionsHeader = (t, navigation) => {
   return {
     Dashboard: {
       title: t('translation:pages.dashboard.title'),
@@ -35,6 +35,35 @@ const OptionsHeader = (t) => {
     },
     Signup: {
       title: t('translation:pages.signup.title'),
+      headerLeft: () => (
+        <Entypo
+          name="back"
+          size={24}
+          color={Colors.colors.black}
+          style={{ paddingLeft: 15 }}
+          onPress={() => navigation.goBack()}
+        />
+      ),
+      headerStyle: {
+        backgroundColor: Colors.colors.primary,
+        shadowOffset: { height: 0, width: 0 },
+      },
+      headerTitleStyle: {
+        fontFamily: 'spartan-bold',
+        fontSize: 15,
+      },
+    },
+    Password: {
+      title: t('translation:pages.password.title'),
+      headerLeft: () => (
+        <Entypo
+          name="back"
+          size={24}
+          color={Colors.colors.black}
+          style={{ paddingLeft: 15 }}
+          onPress={() => navigation.goBack()}
+        />
+      ),
       headerStyle: {
         backgroundColor: Colors.colors.primary,
         shadowOffset: { height: 0, width: 0 },

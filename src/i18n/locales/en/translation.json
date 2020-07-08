@@ -20,10 +20,9 @@
       "button1": "CREATE AN ACCOUNT"
     },
     "password": {
-      "title": "NEW PASSWORD",
-      "input1": "NEW PASSWORD",
-      "input2": "TYPE PASSWORD AGAIN",
-      "button1": "SEND"
+      "title": "RESET PASSWORD",
+      "input1": "EMAIL",
+      "button1": "RESET PASSWORD"
     },
     "dashboard": {
       "title": "PLAYZR."
@@ -33,6 +32,16 @@
     "login": {
       "title": "CONNECTION ERROR",
       "text": "Email/Password incorrect!"
+    },
+    "password": {
+      "title": "OUPS!",
+      "text": "Error while reseting..."
+    }
+  },
+  "success": {
+    "password": {
+      "title": "CONGRATULATION!",
+      "text": "Your password has beeen reset!"
     }
   }
 }

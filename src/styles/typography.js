@@ -23,3 +23,15 @@ export const textBtnLoading = {
   ...textBtn,
   color: colors.black02,
 };
+
+export const titleSuccessMessage = {
+  ...placeholderStyle,
+  color: colors.white,
+  marginLeft: 15,
+};
+
+export const textSuccessMessage = {
+  fontFamily: 'spartan-regular',
+  fontSize: 14,
+  color: colors.white,
+};

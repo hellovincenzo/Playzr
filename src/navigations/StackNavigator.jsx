@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { routes } from '~/routes';
 
-const StackNavigator = () => {
+const StackNavigator = ({ navigation }) => {
   const Stack = createStackNavigator();
   const { t } = useTranslation();
 
@@ -23,7 +23,7 @@ const StackNavigator = () => {
           key={route.name}
           name={route.name}
           component={route.component}
-          options={route.options(t)}
+          options={route.options(t, navigation)}
         />
       ))}
     </Stack.Navigator>

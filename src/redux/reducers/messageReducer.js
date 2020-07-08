@@ -4,6 +4,7 @@ const messages = {
   success: {
     title: '',
     text: '',
+    isSuccessShowing: false,
   },
   error: {
     title: '',
@@ -19,6 +20,7 @@ const messageReducer = (state = messages, action) => {
         success: {
           title: action.title,
           text: action.text,
+          isSuccessShowing: true,
         },
       };
 
@@ -37,6 +39,7 @@ const messageReducer = (state = messages, action) => {
         success: {
           title: '',
           text: '',
+          isSuccessShowing: false,
         },
         error: {
           title: '',

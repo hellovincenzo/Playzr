@@ -20,10 +20,9 @@
       "button1": "CRÉER UN COMPTE"
     },
     "password": {
-      "title": "NOUVEAU MOT DE PASSE",
-      "input1": "NOUVEAU MOT DE PASSE",
-      "input2": "RETAPER MOT DE PASSE",
-      "button1": "ENVOYER"
+      "title": "RÉINITIALISER MOT DE PASSE",
+      "input1": "EMAIL",
+      "button1": "RÉINITIALISER MOT DE PASSE"
     },
     "dashboard": {
       "title": "PLAYZR."
@@ -33,6 +32,16 @@
     "login": {
       "title": "ERREUR CONNECTION",
       "text": "Email/Mot de passe incorrect!"
+    },
+    "password": {
+      "title": "OUPS!",
+      "text": "Erreur pendant la réinitialisation..."
+    }
+  },
+  "success": {
+    "password": {
+      "title": "FÉLICITATION!",
+      "text": "Votre mot de passe vient d'être réinitialisé!"
     }
   }
 }

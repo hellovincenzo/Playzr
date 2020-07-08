@@ -10,9 +10,9 @@ export const btn = {
 export const bordered = {
   ...btn,
   width: '90%',
-  height: 60,
   backgroundColor: colors.black,
   borderRadius: 5,
+  height: 60,
 };
 
 export const borderedLoading = {

@@ -17,16 +17,12 @@ export const routes = {
     {
       name: 'Signup',
       component: Signup,
-      options: (t) => OptionsHeader(t).Signup,
+      options: (t, navigation) => OptionsHeader(t, navigation).Signup,
     },
     {
       name: 'Password',
       component: Password,
-      options(t) {
-        return {
-          title: t('translation:pages.password.title'),
-        };
-      },
+      options: (t, navigation) => OptionsHeader(t, navigation).Password,
     },
   ],
   authorize: [
