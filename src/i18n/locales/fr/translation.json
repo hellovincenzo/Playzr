@@ -13,11 +13,13 @@
       "title": "CRÉER UN COMPTE",
       "input1": "PRÉNOM",
       "input2": "NOM",
-      "input3": "PLATFORME DE JEUX",
-      "input4": "PSEUDO",
-      "input5": "MOT DE PASSE",
-      "input6": "PAYS",
-      "button1": "CRÉER UN COMPTE"
+      "input3": "EMAIL",
+      "input4": "PLATFORME DE JEUX",
+      "input5": "PSEUDO",
+      "input6": "MOT DE PASSE",
+      "input7": "PAYS",
+      "button1": "CRÉER UN COMPTE",
+      "button2": "RETOUR À L'ÉCRAN DE CONNEXION"
     },
     "password": {
       "title": "RÉINITIALISER MOT DE PASSE",
@@ -36,12 +38,20 @@
     "password": {
       "title": "OUPS!",
       "text": "Erreur pendant la réinitialisation..."
+    },
+    "signup": {
+      "title": "OUPS!",
+      "text": "Tout les champs requis!"
     }
   },
   "success": {
     "password": {
       "title": "FÉLICITATION!",
       "text": "Votre mot de passe vient d'être réinitialisé!"
+    },
+    "signup": {
+      "title": "FÉLICITATION!",
+      "text": "Votre compte a été créé avec succé!"
     }
   }
 }

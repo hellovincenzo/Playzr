@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Image, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 // COMPONENTS
@@ -12,69 +11,85 @@ import { Assets } from '~/styles';
 
 // ASSETS
 import backgroundImage from '~/assets/background.png';
-import logo from '~/assets/logo.png';
 
 // API
-import { auth } from '~/API';
+import { signup } from '~/API';
+
+// SIGNUP CONSTANT
+import { SIGNUP } from './constant';
 
 const Signup = ({ navigation }) => {
   const { t } = useTranslation();
-  const [isLoading, setIsLoading] = useState(false);
-
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [inputs, setInputs] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    gamePlatform: '',
+    username: '',
+    password: '',
+    country: '',
+  });
 
-  const handleEmail = (eml) => setEmail(eml);
-  const handlePassword = (pwd) => setPassword(pwd);
+  const {
+    ui: { isLoading },
+  } = useSelector((state) => state);
 
-  const signIn = () => {
-    setIsLoading(!isLoading);
-    auth(email, password, dispatch);
+  const {
+    success: { isSuccessShowing },
+  } = useSelector((state) => state.message);
+
+  const createAccount = () => {
+    const {
+      firstName,
+      lastName,
+      email,
+      gamePlatform,
+      userName,
+      password,
+      country,
+    } = inputs;
+
+    signup(
+      firstName,
+      lastName,
+      email,
+      gamePlatform,
+      userName,
+      password,
+      country,
+      dispatch
+    );
   };
 
   return (
     <Layout backgroundImage={backgroundImage} behave>
       <Row>
         <Column>
-          <Input
-            placeholder={t('translation:pages.signup.input1')}
-            value={email}
-            onChange={handleEmail}
-          />
-          <Input
-            placeholder={t('translation:pages.signup.input2')}
-            value={password}
-            onChange={handlePassword}
-            secureTextEntry
-          />
-          <Input
-            placeholder={t('translation:pages.signup.input3')}
-            value={email}
-            onChange={handleEmail}
-          />
-          <Input
-            placeholder={t('translation:pages.signup.input4')}
-            value={password}
-            onChange={handlePassword}
-            secureTextEntry
-          />
-          <Input
-            placeholder={t('translation:pages.signup.input5')}
-            value={password}
-            onChange={handlePassword}
-            secureTextEntry
-          />
-          <Input
-            placeholder={t('translation:pages.signup.input6')}
-            value={password}
-            onChange={handlePassword}
-            secureTextEntry
-          />
+          {SIGNUP.forms(inputs, setInputs).map((form) => {
+            const {
+              placeholder,
+              value,
+              setInput,
+              onSubmitEditing,
+              secureTextEntry,
+            } = form;
+            return (
+              <Input
+                key={placeholder}
+                placeholder={t(placeholder)}
+                value={value}
+                onChange={setInput}
+                onSubmitEditing={onSubmitEditing}
+                secureTextEntry={secureTextEntry}
+                isLoading={isLoading || isSuccessShowing}
+              />
+            );
+          })}
           <Btn
             text={t('translation:pages.signup.button1')}
-            onPress={signIn}
+            onPress={createAccount}
             isLoading={isLoading}
             bordered
           />
@@ -83,11 +98,5 @@ const Signup = ({ navigation }) => {
     </Layout>
   );
 };
-
-const styles = StyleSheet.create({
-  logo: {
-    ...Assets.logo,
-  },
-});
 
 export { Signup };

@@ -13,11 +13,13 @@
       "title": "SIGNUP",
       "input1": "FIRST NAME",
       "input2": "LASTNAME",
-      "input3": "GAME PLATFORM",
-      "input4": "USERNAME",
-      "input5": "PASSWORD",
-      "input6": "COUNTRY",
-      "button1": "CREATE AN ACCOUNT"
+      "input3": "EMAIL",
+      "input4": "GAME PLATFORM",
+      "input5": "USERNAME",
+      "input6": "PASSWORD",
+      "input7": "COUNTRY",
+      "button1": "CREATE AN ACCOUNT",
+      "button2": "BACK TO LOGIN SCREEN"
     },
     "password": {
       "title": "RESET PASSWORD",
@@ -36,12 +38,20 @@
     "password": {
       "title": "OUPS!",
       "text": "Error while reseting..."
+    },
+    "signup": {
+      "title": "OUPS!",
+      "text": "All input fields required!"
     }
   },
   "success": {
     "password": {
       "title": "CONGRATULATION!",
       "text": "Your password has beeen reset!"
+    },
+    "signup": {
+      "title": "CONGRATULATION!",
+      "text": "Your account has been created successufully!"
     }
   }
 }

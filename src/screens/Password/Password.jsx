@@ -12,7 +12,7 @@ import backgroundImage from '~/assets/background.png';
 // API
 import { resetPassowrd } from '~/API';
 
-const Password = ({ navigation }) => {
+const Password = () => {
   const { t } = useTranslation();
 
   const {
@@ -34,6 +34,7 @@ const Password = ({ navigation }) => {
           <Input
             placeholder={t('translation:pages.password.input1')}
             value={email}
+            onSubmitEditing={requestNewPassword}
             onChange={handleEmail}
           />
           <Btn

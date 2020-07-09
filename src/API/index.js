@@ -33,8 +33,8 @@ export const signup = (
   firstname,
   lastname,
   email,
-  platform,
-  username,
+  game_platform,
+  game_username,
   password,
   country,
   dispatch
@@ -45,20 +45,30 @@ export const signup = (
       firstname,
       lastname,
       email,
-      platform,
-      username,
+      game_platform,
+      game_username,
       password,
       country,
     })
-    .then((result) => dispatch({ type: STOP_FETCHING }))
+    .then((result) => {
+      if (result) {
+        dispatch({ type: STOP_FETCHING });
+        dispatch({
+          type: SUCCESS_MSG,
+          title: 'translation:success.signup.title',
+          text: 'translation:success.signup.text',
+        });
+      }
+    })
     .catch((error) => {
-      console.log(error.message);
-      dispatch({ type: STOP_FETCHING });
-      dispatch({
-        type: ERROR_MSG,
-        title: 'translation:error.login.title',
-        text: 'translation:error.login.text',
-      });
+      if (error) {
+        dispatch({ type: STOP_FETCHING });
+        dispatch({
+          type: ERROR_MSG,
+          title: 'translation:error.signup.title',
+          text: 'translation:error.signup.text',
+        });
+      }
     });
 };
 
@@ -69,16 +79,16 @@ export const resetPassowrd = (email, dispatch) => {
       email,
     })
     .then((result) => {
-      console.log(result);
-      dispatch({ type: STOP_FETCHING });
-      dispatch({
-        type: SUCCESS_MSG,
-        title: 'translation:success.password.title',
-        text: 'translation:success.password.text',
-      });
+      if (result) {
+        dispatch({ type: STOP_FETCHING });
+        dispatch({
+          type: SUCCESS_MSG,
+          title: 'translation:success.password.title',
+          text: 'translation:success.password.text',
+        });
+      }
     })
     .catch((error) => {
-      console.log(error.message);
       if (error) {
         dispatch({ type: STOP_FETCHING });
         dispatch({

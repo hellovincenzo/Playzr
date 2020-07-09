@@ -1,9 +1,21 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Ionicons, FontAwesome5, Entypo } from '@expo/vector-icons';
 
 import { Colors } from '~/styles';
 
+// REDUX TYPES
+import { CLEAR_MSG } from '~/redux/types/messageTypes';
+
 const OptionsHeader = (t, navigation) => {
+  const { goBack } = navigation;
+  const dispatch = useDispatch();
+
+  const handleBackBtnPress = () => {
+    dispatch({ type: CLEAR_MSG });
+    goBack();
+  };
+
   return {
     Dashboard: {
       title: t('translation:pages.dashboard.title'),
@@ -41,7 +53,7 @@ const OptionsHeader = (t, navigation) => {
           size={24}
           color={Colors.colors.black}
           style={{ paddingLeft: 15 }}
-          onPress={() => navigation.goBack()}
+          onPress={handleBackBtnPress}
         />
       ),
       headerStyle: {
@@ -61,7 +73,7 @@ const OptionsHeader = (t, navigation) => {
           size={24}
           color={Colors.colors.black}
           style={{ paddingLeft: 15 }}
-          onPress={() => navigation.goBack()}
+          onPress={handleBackBtnPress}
         />
       ),
       headerStyle: {
