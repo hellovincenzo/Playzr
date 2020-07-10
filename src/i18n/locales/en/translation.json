@@ -32,22 +32,22 @@
   },
   "error": {
     "login": {
-      "title": "CONNECTION ERROR",
+      "title": "Error...",
       "text": "Email/Password incorrect!"
     },
     "password": {
-      "title": "OUPS!",
+      "title": "Oups!",
       "text": "Error while reseting..."
     },
     "signup": {
-      "title": "OUPS!",
+      "title": "Oups!",
       "text": "All input fields required!"
     }
   },
   "success": {
     "password": {
       "title": "CONGRATULATION!",
-      "text": "Your password has beeen reset!"
+      "text": "Your password has been reset!"
     },
     "signup": {
       "title": "CONGRATULATION!",

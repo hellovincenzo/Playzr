@@ -14,7 +14,6 @@ import {
 
 // COMPONENTS
 import { DismissKeyboard } from '~/components/common';
-import { SuccessMessage } from '~/components/SuccessMessage/SuccessMessage';
 
 // REDUX TYPES
 import { CLEAR_MSG } from '~/redux/types/messageTypes';
@@ -22,19 +21,12 @@ import { CLEAR_MSG } from '~/redux/types/messageTypes';
 // STYLES
 import { Assets } from '~/styles';
 
-// HELPERS
-import { alertMsg } from '~/helpers';
-
 const Layout = ({ children, backgroundImage }) => {
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
   const { error } = useSelector((state) => state.message);
-
-  const {
-    success: { isSuccessShowing, title, text },
-  } = useSelector((state) => state.message);
 
   const Tag = backgroundImage ? ImageBackground : SafeAreaView;
   const behavior = Platform.OS === 'ios' ? 'padding' : 'height';
@@ -48,12 +40,6 @@ const Layout = ({ children, backgroundImage }) => {
       <KeyboardAvoidingView behavior={behavior} style={styles.container}>
         <ScrollView>
           <Tag source={backgroundImage} style={styles.background}>
-            {error.title
-              ? alertMsg(t(error.title), t(error.text), dispatch)
-              : null}
-            {isSuccessShowing ? (
-              <SuccessMessage title={title} text={text} />
-            ) : null}
             {children}
           </Tag>
         </ScrollView>

@@ -14,7 +14,7 @@ import { Row, Column } from '~/components/common';
 // REDUX TYPES
 import { CLEAR_MSG } from '~/redux/types/messageTypes';
 
-const SuccessMessage = ({ title, text }) => {
+const ErrorMessage = ({ title, text }) => {
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
@@ -31,14 +31,14 @@ const SuccessMessage = ({ title, text }) => {
 
   const openMessagePopUp = () => {
     Animated.timing(translateY, {
-      toValue: 35,
+      toValue: -135,
       duration: 700,
     }).start();
   };
 
   const closeMessagePopUp = () => {
     Animated.timing(translateY, {
-      toValue: -100,
+      toValue: 100,
       duration: 700,
     }).start(() => dispatch({ type: CLEAR_MSG }));
   };
@@ -50,16 +50,16 @@ const SuccessMessage = ({ title, text }) => {
   return (
     <Animated.View style={[styles.container, animatedStyles]}>
       <Row>
-        <Column positionX="flex-end">
+        <Column cols={2} positionX="flex-start">
+          <Text style={styles.title}>{t(title)}</Text>
+        </Column>
+        <Column cols={2} positionX="flex-end">
           <Entypo
             name="cross"
             size={30}
-            color={Colors.colors.white}
+            color={Colors.colors.black02}
             onPress={closeMessagePopUp}
           />
-        </Column>
-        <Column>
-          <Text style={styles.title}>{t(title)}</Text>
         </Column>
         <Column>
           <Text style={styles.text}>{t(text)}</Text>
@@ -69,12 +69,12 @@ const SuccessMessage = ({ title, text }) => {
   );
 };
 
-SuccessMessage.defaultProps = {
+ErrorMessage.defaultProps = {
   title: 'Title',
   text: 'Text',
 };
 
-SuccessMessage.propTypes = {
+ErrorMessage.propTypes = {
   title: PropTypes.string,
   text: PropTypes.string,
 };
@@ -82,16 +82,17 @@ SuccessMessage.propTypes = {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    backgroundColor: Colors.colors.green,
+    bottom: -150,
+    backgroundColor: Colors.colors.lightgrey,
     height: 100,
     zIndex: 2,
   },
   title: {
-    ...Typo.titleSuccessMessage,
+    ...Typo.titleErrorMessage,
   },
   text: {
-    ...Typo.textSuccessMessage,
+    ...Typo.textErrorMessage,
   },
 });
 
-export { SuccessMessage };
+export { ErrorMessage };

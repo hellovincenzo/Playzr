@@ -32,15 +32,15 @@
   },
   "error": {
     "login": {
-      "title": "ERREUR CONNECTION",
+      "title": "Erreur..",
       "text": "Email/Mot de passe incorrect!"
     },
     "password": {
-      "title": "OUPS!",
+      "title": "Oups!",
       "text": "Erreur pendant la réinitialisation..."
     },
     "signup": {
-      "title": "OUPS!",
+      "title": "Oups!",
       "text": "Tout les champs requis!"
     }
   },

@@ -9,6 +9,7 @@ const messages = {
   error: {
     title: '',
     text: '',
+    isErrorShowing: false,
   },
 };
 
@@ -30,6 +31,7 @@ const messageReducer = (state = messages, action) => {
         error: {
           title: action.title,
           text: action.text,
+          isErrorShowing: true,
         },
       };
 
@@ -44,6 +46,7 @@ const messageReducer = (state = messages, action) => {
         error: {
           title: '',
           text: '',
+          isErrorShowing: false,
         },
       };
 

@@ -37,3 +37,17 @@ export const textSuccessMessage = {
   fontSize: 14,
   color: colors.white,
 };
+
+export const titleErrorMessage = {
+  fontFamily: 'spartan-bold',
+  fontSize: 16,
+  textAlign: 'center',
+  color: colors.danger,
+  marginLeft: 15,
+};
+
+export const textErrorMessage = {
+  fontFamily: 'spartan-regular',
+  fontSize: 14,
+  color: colors.black,
+};
