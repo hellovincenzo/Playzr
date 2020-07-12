@@ -7,7 +7,8 @@
       "input2": "PASSWORD",
       "button1": "Forgot password",
       "button2": "START PLAYING",
-      "button3": "Create an account"
+      "button3": "Create an account",
+      "text1": "Or"
     },
     "signup": {
       "title": "SIGNUP",

@@ -4,7 +4,4 @@ export const row = {
   flexWrap: 'wrap',
 };
 
-export const column = {
-  justifyContent: 'center',
-  alignItems: 'center',
-};
+export const column = {};

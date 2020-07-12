@@ -1,9 +1,17 @@
 import axios from 'axios';
 
 import { route } from './constant';
-import { SIGN_IN } from '~/redux/types/userTypes';
+import { SIGN_IN, GET_USER } from '~/redux/types/userTypes';
 import { SUCCESS_MSG, ERROR_MSG } from '~/redux/types/messageTypes';
 import { START_FETCHING, STOP_FETCHING } from '~/redux/types/uiTypes';
+
+export const getUser = (token, id, dispatch) =>
+  axios
+    .get(route.getUser, {
+      params: { token, id },
+    })
+    .then((user) => user && dispatch({ type: GET_USER, user }))
+    .catch((error) => console.log(error));
 
 export const auth = (email, password, dispatch) => {
   dispatch({ type: START_FETCHING });

@@ -15,6 +15,7 @@ const Btn = ({
   onPress,
   isLoading,
   bordered,
+  borderedPrimary,
   borderBottom,
 }) => {
   let btnStyles;
@@ -24,6 +25,8 @@ const Btn = ({
     if (isLoading) {
       btnStyles = styles.btnBorderedLoading;
     }
+  } else if (borderedPrimary) {
+    btnStyles = styles.btnBorderedPrimary;
   } else if (borderBottom) {
     btnStyles = styles.btnBorderedBottom;
   } else {
@@ -59,6 +62,9 @@ const styles = StyleSheet.create({
   btnBordered: {
     ...BtnStyles.bordered,
   },
+  btnBorderedPrimary: {
+    ...BtnStyles.borderedPrimary,
+  },
   btnBorderedLoading: {
     ...BtnStyles.borderedLoading,
   },
@@ -73,6 +79,9 @@ const styles = StyleSheet.create({
   },
   textBordered: {
     ...Typo.textBtnBordered,
+  },
+  textBorderedPrimary: {
+    ...Typo.textBtnBorderedPrimary,
   },
 });
 

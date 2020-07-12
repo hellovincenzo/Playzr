@@ -7,7 +7,8 @@
       "input2": "MOT DE PASSE",
       "button1": "Mot de passe oublié",
       "button2": "COMMENCER À JOUER",
-      "button3": "Créer un compte"
+      "button3": "Créer un compte",
+      "text1": "Ou"
     },
     "signup": {
       "title": "CRÉER UN COMPTE",

@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { Text, StyleSheet, Animated } from 'react-native';
+import { Text, StyleSheet, Animated, View } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 
 // COLORS
@@ -15,11 +15,10 @@ import { Row, Column } from '~/components/common';
 import { CLEAR_MSG } from '~/redux/types/messageTypes';
 
 const SuccessMessage = ({ title, text }) => {
+  const [translateY, setTranslateY] = useState(new Animated.Value(-100));
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
-
-  const translateY = useRef(new Animated.Value(-100)).current;
 
   const animatedStyles = {
     transform: [
@@ -33,6 +32,7 @@ const SuccessMessage = ({ title, text }) => {
     Animated.timing(translateY, {
       toValue: 35,
       duration: 700,
+      useNativeDriver: true,
     }).start();
   };
 

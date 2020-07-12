@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { StatusBar } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -26,6 +27,7 @@ const AppContainer = () => {
 
   return (
     <NavigationContainer>
+      <StatusBar barStyle="default" />
       {success.isSuccessShowing ? (
         <SuccessMessage title={success.title} text={success.text} />
       ) : null}

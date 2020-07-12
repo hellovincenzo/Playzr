@@ -12,6 +12,11 @@ export const textBtnBordered = {
   color: colors.white,
 };
 
+export const textBtnBorderedPrimary = {
+  ...textBtnBordered,
+  color: colors.primary,
+};
+
 export const textBtn = {
   fontFamily: 'spartan-medium',
   fontSize: 16,

@@ -4,7 +4,7 @@ export const btn = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  marginBottom: 5,
+  margin: 5,
 };
 
 export const bordered = {
@@ -13,6 +13,11 @@ export const bordered = {
   backgroundColor: colors.black,
   borderRadius: 5,
   height: 60,
+};
+
+export const borderedPrimary = {
+  ...bordered,
+  backgroundColor: colors.primary,
 };
 
 export const borderedLoading = {

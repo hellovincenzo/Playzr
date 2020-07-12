@@ -1,7 +1,8 @@
-import { SIGN_IN, SIGN_OUT } from '~/redux/types/userTypes';
+import { SIGN_IN, SIGN_OUT, GET_USER } from '~/redux/types/userTypes';
 
 const init = {
   user: {
+    data: {},
     isSignIn: false,
     token: '',
     id: '',
@@ -28,6 +29,12 @@ const userReducer = (state = init, action) => {
           token: '',
           id: '',
         },
+      };
+
+    case GET_USER:
+      return {
+        ...state,
+        data: action.user.data.user,
       };
 
     default:

@@ -23,7 +23,7 @@ const ChangeLanguage = () => {
   const imageStylesEn = lng === 'en' ? styles.flag : styles.flagInactive;
   return (
     <>
-      <Column cols={2} positionX="flex-end">
+      <Column cols={2} positionX="flex-end" positionY="flex-end">
         <Btn onPress={() => changeLanguage('fr', dispatch)}>
           <Image style={imageStylesFr} source={frenchFlag} />
         </Btn>

@@ -2,19 +2,22 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Ionicons, FontAwesome5, Entypo } from '@expo/vector-icons';
 
+// COLORS
 import { Colors } from '~/styles';
 
 // REDUX TYPES
 import { CLEAR_MSG } from '~/redux/types/messageTypes';
 
 const OptionsHeader = (t, navigation) => {
-  const { goBack } = navigation;
+  const { navigate, goBack, toggleDrawer } = navigation;
   const dispatch = useDispatch();
 
   const handleBackBtnPress = () => {
     dispatch({ type: CLEAR_MSG });
     goBack();
   };
+
+  const toggleMenu = () => toggleDrawer();
 
   return {
     Dashboard: {
@@ -25,7 +28,7 @@ const OptionsHeader = (t, navigation) => {
           size={45}
           color={Colors.colors.black}
           style={{ paddingLeft: 15 }}
-          onPress={null}
+          onPress={toggleMenu}
         />
       ),
       headerRight: () => (

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Image, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 // COMPONENTS
-import { Row, Column, Input, Btn } from '~/components/common';
+import { Row, Column, Input, Btn, Heading } from '~/components/common';
 import { Layout } from '~/components/Layout/Layout';
 import { ChangeLanguage } from '~/components/ChangeLanguage/ChangeLanguage';
 
@@ -19,16 +19,16 @@ import logo from '~/assets/logo.png';
 import { auth } from '~/API';
 
 const Login = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const { t } = useTranslation();
+
+  const dispatch = useDispatch();
 
   const {
     ui: { isLoading },
   } = useSelector((state) => state);
-
-  const dispatch = useDispatch();
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
   const handleEmail = (eml) => setEmail(eml);
   const handlePassword = (pwd) => setPassword(pwd);
@@ -69,19 +69,19 @@ const Login = ({ navigation }) => {
         </Column>
       </Row>
       <Row>
-        <Column positionY="flex-start">
+        <Column>
           <Btn
             text={t('translation:pages.login.button2')}
             onPress={signIn}
             isLoading={isLoading}
             bordered
           />
-        </Column>
-        <Column positionY="flex-start">
+          <Heading level={6} text={t('translation:pages.login.text1')} />
           <Btn
             text={t('translation:pages.login.button3')}
             onPress={() => navigation.navigate('Signup')}
             isLoading={isLoading}
+            borderedPrimary
           />
         </Column>
       </Row>

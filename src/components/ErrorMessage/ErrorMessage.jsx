@@ -40,12 +40,11 @@ const ErrorMessage = ({ title, text }) => {
     Animated.timing(translateY, {
       toValue: 100,
       duration: 700,
+      useNativeDriver: true,
     }).start(() => dispatch({ type: CLEAR_MSG }));
   };
 
-  useEffect(() => {
-    openMessagePopUp();
-  }, []);
+  useEffect(() => openMessagePopUp(), []);
 
   return (
     <Animated.View style={[styles.container, animatedStyles]}>

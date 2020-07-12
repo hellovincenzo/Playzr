@@ -29,7 +29,7 @@ export const routes = {
     {
       name: 'Dashboard',
       component: Dashboard,
-      options: (t) => OptionsHeader(t).Dashboard,
+      options: (t, navigation) => OptionsHeader(t, navigation).Dashboard,
     },
   ],
 };
