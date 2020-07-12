@@ -29,6 +29,9 @@
     },
     "dashboard": {
       "title": "PLAYZR."
+    },
+    "profile": {
+      "title": "Profile"
     }
   },
   "error": {

@@ -1,4 +1,4 @@
-import { Login, Signup, Password, Dashboard } from '~/screens';
+import { Login, Signup, Password, Dashboard, Profile } from '~/screens';
 
 import { OptionsHeader } from './OptionsHeader';
 
@@ -30,6 +30,11 @@ export const routes = {
       name: 'Dashboard',
       component: Dashboard,
       options: (t, navigation) => OptionsHeader(t, navigation).Dashboard,
+    },
+    {
+      name: 'Profile',
+      component: Profile,
+      options: (t, navigation) => OptionsHeader(t, navigation).Profile,
     },
   ],
 };

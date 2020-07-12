@@ -37,6 +37,7 @@ const OptionsHeader = (t, navigation) => {
           size={35}
           color={Colors.colors.black}
           style={{ paddingRight: 15 }}
+          onPress={() => navigate('Profile')}
         />
       ),
       headerStyle: {
@@ -46,6 +47,26 @@ const OptionsHeader = (t, navigation) => {
       headerTitleStyle: {
         fontFamily: 'spartan-bold',
         fontSize: 25,
+      },
+    },
+    Profile: {
+      title: t('translation:pages.profile.title'),
+      headerLeft: () => (
+        <Entypo
+          name="back"
+          size={24}
+          color={Colors.colors.black}
+          style={{ paddingLeft: 15 }}
+          onPress={handleBackBtnPress}
+        />
+      ),
+      headerStyle: {
+        backgroundColor: Colors.colors.primary,
+        shadowOffset: { height: 0, width: 0 },
+      },
+      headerTitleStyle: {
+        fontFamily: 'spartan-bold',
+        fontSize: 15,
       },
     },
     Signup: {
