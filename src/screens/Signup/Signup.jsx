@@ -6,9 +6,6 @@ import { useTranslation } from 'react-i18next';
 import { Row, Column, Input, Btn } from '~/components/common';
 import { Layout } from '~/components/Layout/Layout';
 
-// STYLES
-import { Assets } from '~/styles';
-
 // ASSETS
 import backgroundImage from '~/assets/background.png';
 

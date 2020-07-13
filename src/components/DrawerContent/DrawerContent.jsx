@@ -2,8 +2,6 @@ import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 
-import { ChangeLanguage } from '~/components/ChangeLanguage/ChangeLanguage';
-
 // COMPONENTS
 import { Row, Column } from '~/components/common';
 
@@ -14,11 +12,7 @@ import logo from '~/assets/logo.png';
 import { Assets } from '~/styles';
 
 const DrawerContent = ({ drawerItems, navigation }) => (
-  <DrawerContentScrollView
-    contentContainerStyle={{
-      height: '100%',
-    }}
-  >
+  <DrawerContentScrollView contentContainerStyle={styles.contentContainerStyle}>
     <Row>
       <Column>
         <Image style={styles.logo} source={logo} />
@@ -36,11 +30,12 @@ const DrawerContent = ({ drawerItems, navigation }) => (
                 name={drawerItem.name}
                 color={drawerItem.color}
                 size={drawerItem.size}
+                style={styles.icon}
               />
             )}
             label={drawerItem.label}
+            labelStyle={styles.labelStyle}
             onPress={drawerItem.onPress}
-            style={drawerItem.style}
           />
         </Column>
       </Row>
@@ -51,6 +46,12 @@ const DrawerContent = ({ drawerItems, navigation }) => (
 const styles = StyleSheet.create({
   logo: {
     ...Assets.logo,
+  },
+  contentContainerStyle: { height: '100%' },
+  icon: { width: 30, height: 30 },
+  labelStyle: {
+    fontFamily: 'spartan-medium',
+    fontSize: 16,
   },
 });
 

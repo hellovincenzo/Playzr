@@ -30,8 +30,23 @@
     "dashboard": {
       "title": "PLAYZR."
     },
-    "profile": {
-      "title": "Profile"
+    "account": {
+      "title": "Compte"
+    },
+    "results": {
+      "title": "Résulats"
+    },
+    "rank": {
+      "title": "Classement"
+    },
+    "plan": {
+      "ttile": "Formule"
+    },
+    "tournament": {
+      "title": "Tournois"
+    },
+    "deposit": {
+      "title": "Dépôts & Retraits"
     }
   },
   "error": {
@@ -57,5 +72,15 @@
       "title": "FÉLICITATION!",
       "text": "Votre compte a été créé avec succé!"
     }
+  },
+  "drawer": {
+    "label1": "Accueil",
+    "label2": "Mon compte",
+    "label3": "Mes résultats",
+    "label4": "Mon classement",
+    "label5": "Ma formule",
+    "label6": "Tournois",
+    "label7": "Dépots et Retraits",
+    "label8": "Déconnexion"
   }
 }

@@ -30,8 +30,23 @@
     "dashboard": {
       "title": "PLAYZR."
     },
-    "profile": {
-      "title": "Profile"
+    "account": {
+      "title": "Account"
+    },
+    "results": {
+      "title": "Results"
+    },
+    "rank": {
+      "title": "Rank"
+    },
+    "plan": {
+      "title": "Plan"
+    },
+    "tournament": {
+      "title": "Tournament"
+    },
+    "deposit": {
+      "title": "Deposit & Withdrawal"
     }
   },
   "error": {
@@ -57,5 +72,15 @@
       "title": "CONGRATULATION!",
       "text": "Your account has been created successufully!"
     }
+  },
+  "drawer": {
+    "label1": "Dashboard",
+    "label2": "My account",
+    "label3": "My results",
+    "label4": "My rank",
+    "label5": "My plan",
+    "label6": "Tournament",
+    "label7": "Deposit & Withdrawal",
+    "label8": "Sign out"
   }
 }

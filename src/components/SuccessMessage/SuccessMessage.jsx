@@ -32,7 +32,6 @@ const SuccessMessage = ({ title, text }) => {
     Animated.timing(translateY, {
       toValue: 35,
       duration: 700,
-      useNativeDriver: true,
     }).start();
   };
 

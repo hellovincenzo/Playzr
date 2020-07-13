@@ -1,6 +1,17 @@
-import { Login, Signup, Password, Dashboard, Profile } from '~/screens';
+import {
+  Login,
+  Signup,
+  Password,
+  Dashboard,
+  Account,
+  Results,
+  Rank,
+  Plan,
+  Tournament,
+} from '~/screens';
 
 import { OptionsHeader } from './OptionsHeader';
+import { Deposit } from '../screens';
 
 export const routes = {
   unauthorize: [
@@ -32,9 +43,34 @@ export const routes = {
       options: (t, navigation) => OptionsHeader(t, navigation).Dashboard,
     },
     {
-      name: 'Profile',
-      component: Profile,
-      options: (t, navigation) => OptionsHeader(t, navigation).Profile,
+      name: 'Account',
+      component: Account,
+      options: (t, navigation) => OptionsHeader(t, navigation).Account,
+    },
+    {
+      name: 'Results',
+      component: Results,
+      options: (t, navigation) => OptionsHeader(t, navigation).Results,
+    },
+    {
+      name: 'Rank',
+      component: Rank,
+      options: (t, navigation) => OptionsHeader(t, navigation).Rank,
+    },
+    {
+      name: 'Plan',
+      component: Plan,
+      options: (t, navigation) => OptionsHeader(t, navigation).Plan,
+    },
+    {
+      name: 'Tournament',
+      component: Tournament,
+      options: (t, navigation) => OptionsHeader(t, navigation).Tournament,
+    },
+    {
+      name: 'Deposit',
+      component: Deposit,
+      options: (t, navigation) => OptionsHeader(t, navigation).Deposit,
     },
   ],
 };

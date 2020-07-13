@@ -12,7 +12,6 @@ import { Colors } from '~/styles';
 
 // ASSETS
 import fondplay from '~/assets/fondplay.png';
-import { SIGN_OUT } from '~/redux/types/userTypes';
 
 // API
 import { getUser } from '~/API';
@@ -40,13 +39,7 @@ const Dashboard = ({ navigation }) => {
         </Column>
       </Row>
       <Row flex={4}>
-        <Column>
-          <Btn
-            text="Exit"
-            onPress={() => dispatch({ type: SIGN_OUT })}
-            bordered
-          />
-        </Column>
+        <Column></Column>
       </Row>
     </Layout>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { useTranslation } from 'react-i18next';
 
 import { TabNavigator } from './TabNavigator';
 
@@ -10,16 +11,15 @@ import { drawerItems } from './drawerConstant';
 
 const DrawerNavigator = () => {
   const Drawer = createDrawerNavigator();
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
-
-  const newDrawerItems = drawerItems(dispatch);
 
   return (
     <Drawer.Navigator
       drawerContent={({ navigation }) => (
         <DrawerContent
-          drawerItems={drawerItems(dispatch, navigation)}
+          drawerItems={drawerItems(dispatch, navigation, t)}
           navigation={navigation}
         />
       )}

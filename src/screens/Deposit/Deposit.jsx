@@ -15,7 +15,7 @@ import { Assets } from '~/styles';
 import backgroundImage from '~/assets/background.png';
 import logo from '~/assets/logo.png';
 
-const Profile = ({ navigation }) => {
+const Deposit = ({ navigation }) => {
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
@@ -29,4 +29,4 @@ const Profile = ({ navigation }) => {
 
 const styles = StyleSheet.create({});
 
-export { Profile };
+export { Deposit };
