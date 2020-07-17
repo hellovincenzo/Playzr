@@ -28,7 +28,8 @@
       "button1": "RÉINITIALISER MOT DE PASSE"
     },
     "dashboard": {
-      "title": "PLAYZR."
+      "title": "PLAYZR.",
+      "button1": "RECHERCHE\nADVERSAIRE"
     },
     "account": {
       "title": "Compte"

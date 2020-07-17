@@ -44,13 +44,15 @@ const Login = ({ navigation }) => {
       </Row>
       <Row>
         <ChangeLanguage />
-        <Column>
+        <Column height={null}>
           <Input
             placeholder={t('translation:pages.login.input1')}
             value={email}
             onChange={handleEmail}
             isLoading={isLoading}
           />
+        </Column>
+        <Column height={null}>
           <Input
             placeholder={t('translation:pages.login.input2')}
             value={password}
@@ -60,6 +62,8 @@ const Login = ({ navigation }) => {
             onSubmitEditing={signIn}
             secureTextEntry
           />
+        </Column>
+        <Column height={null}>
           <Btn
             text={t('translation:pages.login.button1')}
             onPress={() => navigation.navigate('Password')}

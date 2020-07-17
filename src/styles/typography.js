@@ -24,6 +24,11 @@ export const textBtn = {
   color: colors.black,
 };
 
+export const textBtnBold = {
+  ...textBtn,
+  fontFamily: 'spartan-bold',
+};
+
 export const textBtnLoading = {
   ...textBtn,
   color: colors.black02,

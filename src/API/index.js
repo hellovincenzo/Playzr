@@ -5,12 +5,12 @@ import { SIGN_IN, GET_USER } from '~/redux/types/userTypes';
 import { SUCCESS_MSG, ERROR_MSG } from '~/redux/types/messageTypes';
 import { START_FETCHING, STOP_FETCHING } from '~/redux/types/uiTypes';
 
-export const getUser = (token, id, dispatch) =>
+export const getUser = (token, id, setUser) =>
   axios
     .get(route.getUser, {
       params: { token, id },
     })
-    .then((user) => user && dispatch({ type: GET_USER, user }))
+    .then((user) => setUser(user.data.user))
     .catch((error) => console.log(error));
 
 export const auth = (email, password, dispatch) => {

@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 
-const Heading = ({ level, text, fontType }) => {
+// STYLES
+import { Colors } from '~/styles';
+
+const Heading = ({ level, text, fontType, color, ComponentIcon, iconName }) => {
   const font = 'spartan';
 
   const fontSize = () => {
@@ -39,23 +42,32 @@ const Heading = ({ level, text, fontType }) => {
   };
 
   return (
-    <Text
-      style={{ fontSize: fontSize(), fontFamily: `${font}-${fontFamily()}` }}
-    >
-      {text}
-    </Text>
+    <>
+      <Text
+        style={{
+          fontSize: fontSize(),
+          fontFamily: `${font}-${fontFamily()}`,
+          color,
+        }}
+      >
+        {iconName && <ComponentIcon name={iconName} size={24} color={color} />}
+        {text}
+      </Text>
+    </>
   );
 };
 
 Heading.defaultProps = {
   level: 6,
   fontType: 'regular',
+  color: Colors.colors.black,
 };
 
 Heading.propTypes = {
   level: PropTypes.number,
   text: PropTypes.string.isRequired,
   fontType: PropTypes.string,
+  color: PropTypes.string,
 };
 
 export { Heading };

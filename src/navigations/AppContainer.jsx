@@ -13,13 +13,12 @@ import { AppPlayzr } from './AppPlayzr';
 const AppContainer = () => {
   const dispatch = useDispatch();
 
+  const { error } = useSelector((state) => state.message);
+  const { success } = useSelector((state) => state.message);
+
   const {
     settings: { lng },
   } = useSelector((state) => state);
-
-  const { success } = useSelector((state) => state.message);
-
-  const { error } = useSelector((state) => state.message);
 
   useEffect(() => {
     changeLanguage(lng, dispatch);

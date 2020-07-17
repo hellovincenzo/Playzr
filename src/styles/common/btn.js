@@ -20,6 +20,11 @@ export const borderedPrimary = {
   backgroundColor: colors.primary,
 };
 
+export const borderedWhite = {
+  ...bordered,
+  backgroundColor: colors.white,
+};
+
 export const borderedLoading = {
   ...bordered,
   backgroundColor: colors.black02,
@@ -28,7 +33,7 @@ export const borderedLoading = {
 export const borderBottom = {
   ...btn,
   borderWidth: 1,
-  borderBottomColor: 'black',
+  borderBottomColor: colors.black,
   borderTopColor: 'transparent',
   borderLeftColor: 'transparent',
   borderRightColor: 'transparent',

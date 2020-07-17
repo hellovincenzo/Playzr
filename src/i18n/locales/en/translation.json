@@ -28,7 +28,8 @@
       "button1": "RESET PASSWORD"
     },
     "dashboard": {
-      "title": "PLAYZR."
+      "title": "PLAYZR.",
+      "button1": "SEARCH\nOPPONENT"
     },
     "account": {
       "title": "Account"

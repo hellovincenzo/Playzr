@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { node } from 'prop-types';
+import PropTypes from 'prop-types';
 import {
   TouchableHighlight,
   Text,
@@ -7,16 +7,22 @@ import {
   StyleSheet,
 } from 'react-native';
 
+// STYLES
 import { BtnStyles, Typo } from '~/styles';
 
 const Btn = ({
   children,
   text,
+  textColor,
+  font,
+  fontSize,
   onPress,
   isLoading,
   bordered,
   borderedPrimary,
+  borderedWhite,
   borderBottom,
+  style,
 }) => {
   let btnStyles;
 
@@ -27,18 +33,34 @@ const Btn = ({
     }
   } else if (borderedPrimary) {
     btnStyles = styles.btnBorderedPrimary;
+  } else if (borderedWhite) {
+    btnStyles = styles.btnBorderedWhite;
   } else if (borderBottom) {
     btnStyles = styles.btnBorderedBottom;
   } else {
     btnStyles = styles.btn;
   }
 
+  const fontFamily = () => {
+    switch (font) {
+      case 'bold':
+        return 'spartan-bold';
+      case 'medium':
+        return 'spartan-medium';
+      case 'regular':
+        return 'spartan-regular';
+
+      default:
+        return null;
+    }
+  };
+
   const btnText = bordered ? styles.textBordered : styles.text;
   const btnTextLoading = isLoading ? styles.textLoading : btnText;
 
   return (
     <TouchableHighlight
-      style={btnStyles}
+      style={[btnStyles, style]}
       onPress={onPress}
       disabled={isLoading}
       activeOpacity={0.6}
@@ -47,7 +69,18 @@ const Btn = ({
       {isLoading && bordered ? (
         <ActivityIndicator />
       ) : text ? (
-        <Text style={btnTextLoading}>{text}</Text>
+        <Text
+          style={[
+            btnTextLoading,
+            textColor && {
+              color: textColor,
+              fontFamily: fontFamily(),
+              fontSize,
+            },
+          ]}
+        >
+          {text}
+        </Text>
       ) : (
         children
       )}
@@ -64,6 +97,9 @@ const styles = StyleSheet.create({
   },
   btnBorderedPrimary: {
     ...BtnStyles.borderedPrimary,
+  },
+  btnBorderedWhite: {
+    ...BtnStyles.borderedWhite,
   },
   btnBorderedLoading: {
     ...BtnStyles.borderedLoading,

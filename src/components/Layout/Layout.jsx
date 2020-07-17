@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 import {
   SafeAreaView,
   ImageBackground,
@@ -22,11 +21,7 @@ import { CLEAR_MSG } from '~/redux/types/messageTypes';
 import { Assets } from '~/styles';
 
 const Layout = ({ children, backgroundImage }) => {
-  const { t } = useTranslation();
-
   const dispatch = useDispatch();
-
-  const { error } = useSelector((state) => state.message);
 
   const Tag = backgroundImage ? ImageBackground : SafeAreaView;
   const behavior = Platform.OS === 'ios' ? 'padding' : 'height';
@@ -48,6 +43,10 @@ const Layout = ({ children, backgroundImage }) => {
   );
 };
 
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 const styles = StyleSheet.create({
   background: {
     ...Assets.background,
@@ -59,9 +58,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export { Layout };

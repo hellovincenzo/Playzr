@@ -34,7 +34,7 @@ const userReducer = (state = init, action) => {
     case GET_USER:
       return {
         ...state,
-        data: action.user.data.user,
+        data: action.user,
       };
 
     default:

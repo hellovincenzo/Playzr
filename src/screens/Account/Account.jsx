@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Image, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
@@ -10,10 +10,6 @@ import { ChangeLanguage } from '~/components/ChangeLanguage/ChangeLanguage';
 
 // STYLES
 import { Assets } from '~/styles';
-
-// ASSETS
-import backgroundImage from '~/assets/background.png';
-import logo from '~/assets/logo.png';
 
 const Account = ({ navigation }) => {
   const { t } = useTranslation();
