@@ -21,7 +21,7 @@ import { getUser } from '~/API';
 // CONSTANTS
 import { DASHBOARD } from './constant';
 
-const Dashboard = () => {
+const Dashboard = ({ navigation }) => {
   const [userData, setUserData] = useState({});
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -82,7 +82,11 @@ const Dashboard = () => {
         </Column>
       </Row>
       <Row style={styles.optionsContainer}>
-        <OptionSection options={DASHBOARD.options} t={t} />
+        <OptionSection
+          options={DASHBOARD.options}
+          t={t}
+          navigation={navigation}
+        />
       </Row>
     </Layout>
   );

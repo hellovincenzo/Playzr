@@ -2,20 +2,23 @@ import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
 // COMPONENTS COMMON
-import { Column, Btn, Heading } from '~/components/common';
+import { Btn, Heading } from '~/components/common';
 
 // STYLES
 import { Colors } from '~/styles';
 
-const OptionSection = ({ options, t }) => (
+const OptionSection = ({ options, t, navigation }) => (
   <FlatList
     style={styles.optionSectionContainer}
     contentContainerStyle={styles.contentContainerStyle}
     numColumns={2}
     data={options}
     renderItem={({ item }) => (
-      // <Column cols={2}>
-      <Btn style={styles.optionButton} borderedPrimary>
+      <Btn
+        style={styles.optionButton}
+        borderedPrimary
+        onPress={() => navigation.navigate(item.goTo)}
+      >
         <Heading
           text={t(item.label)}
           color="white"
@@ -28,7 +31,6 @@ const OptionSection = ({ options, t }) => (
           ComponentIcon={item.component}
         />
       </Btn>
-      // </Column>
     )}
     keyExtractor={(item) => item.label}
   />
