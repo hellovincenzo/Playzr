@@ -5,7 +5,19 @@ import { Text } from 'react-native';
 // STYLES
 import { Colors } from '~/styles';
 
-const Heading = ({ level, text, fontType, color, ComponentIcon, iconName }) => {
+const Heading = ({
+  style,
+  level,
+  text,
+  fontType,
+  color,
+  ComponentIcon,
+  iconName,
+  iconColor,
+  iconSize,
+  iconStyle,
+  iconPosition,
+}) => {
   const font = 'spartan';
 
   const fontSize = () => {
@@ -41,26 +53,61 @@ const Heading = ({ level, text, fontType, color, ComponentIcon, iconName }) => {
     }
   };
 
-  return (
-    <>
-      <Text
-        style={{
-          fontSize: fontSize(),
-          fontFamily: `${font}-${fontFamily()}`,
-          color,
-        }}
-      >
-        {iconName && <ComponentIcon name={iconName} size={24} color={color} />}
-        {text}
-      </Text>
-    </>
-  );
+  const headingStyles = [
+    {
+      fontSize: fontSize(),
+      fontFamily: `${font}-${fontFamily()}`,
+      color,
+    },
+    style,
+  ];
+
+  const headingIconStyles = iconStyle;
+
+  const renderHeading = () => {
+    switch (iconPosition) {
+      case 'bottom':
+        return (
+          <>
+            <Text style={headingStyles}>{text}</Text>
+            {iconName && (
+              <ComponentIcon
+                style={headingIconStyles}
+                name={iconName}
+                size={iconSize}
+                color={iconColor ? iconColor : color}
+              />
+            )}
+          </>
+        );
+
+      default:
+        return (
+          <>
+            <Text style={headingStyles}>
+              {iconName && (
+                <ComponentIcon
+                  style={headingIconStyles}
+                  name={iconName}
+                  size={iconSize}
+                  color={color || iconColor}
+                />
+              )}
+              {text}
+            </Text>
+          </>
+        );
+    }
+  };
+
+  return renderHeading();
 };
 
 Heading.defaultProps = {
   level: 6,
   fontType: 'regular',
   color: Colors.colors.black,
+  iconSize: 24,
 };
 
 Heading.propTypes = {

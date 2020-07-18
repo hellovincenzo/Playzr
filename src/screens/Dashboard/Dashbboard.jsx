@@ -7,6 +7,7 @@ import { Entypo } from '@expo/vector-icons';
 // COMPONENTS
 import { Row, Column, Heading, Btn } from '~/components/common';
 import { Layout } from '~/components/Layout/Layout';
+import { OptionSection } from '~/components/OptionSection/OptionSection';
 
 // STYLES
 import { Colors } from '~/styles';
@@ -16,6 +17,9 @@ import fondplay from '~/assets/fondplay.png';
 
 // API
 import { getUser } from '~/API';
+
+// CONSTANTS
+import { DASHBOARD } from './constant';
 
 const Dashboard = () => {
   const [userData, setUserData] = useState({});
@@ -35,6 +39,7 @@ const Dashboard = () => {
   return (
     <Layout backgroundImage={fondplay}>
       <Row
+        flex={0.3}
         backgroundColor={Colors.colors.primary}
         style={styles.userDetailsContainer}
       >
@@ -64,9 +69,10 @@ const Dashboard = () => {
           />
         </Column>
       </Row>
-      <Row flex={4} style={styles.optionsContainer}>
-        <Column>
+      <Row flex={0} style={styles.optionsContainer}>
+        <Column positionY="flex-start">
           <Btn
+            style={styles.searchOppnentButton}
             text={t('translation:pages.dashboard.button1')}
             textColor={Colors.colors.white}
             font="bold"
@@ -74,6 +80,9 @@ const Dashboard = () => {
             borderedPrimary
           />
         </Column>
+      </Row>
+      <Row style={styles.optionsContainer}>
+        <OptionSection options={DASHBOARD.options} t={t} />
       </Row>
     </Layout>
   );
@@ -93,6 +102,10 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25,
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
+  },
+  searchOppnentButton: {
+    width: '98%',
+    marginTop: 25,
   },
 });
 

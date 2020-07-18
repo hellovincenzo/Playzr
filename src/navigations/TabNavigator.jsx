@@ -3,9 +3,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { StackNavigator } from './StackNavigator';
 
-const TabNavigator = () => {
+const TabNavigator = ({ route }) => {
   const Tab = createBottomTabNavigator();
-
+  console.log(route);
   return (
     <Tab.Navigator>
       <Tab.Screen
