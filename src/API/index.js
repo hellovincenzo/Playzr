@@ -13,6 +13,14 @@ export const getUser = (token, id, setUser) =>
     .then((user) => setUser(user.data.user))
     .catch((error) => console.log(error));
 
+export const getRank = (token, setRank) =>
+  axios
+    .get(route.getRanking, {
+      params: { token },
+    })
+    .then((rank) => setRank(rank.data))
+    .catch((error) => console.log(error));
+
 export const auth = (email, password, dispatch) => {
   dispatch({ type: START_FETCHING });
   axios

@@ -27,7 +27,6 @@ const Account = ({ navigation }) => {
     getUser(token, id, setUserData);
   }, []);
 
-  console.log(userData);
   return (
     <Layout>
       <Row>
