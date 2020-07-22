@@ -32,7 +32,15 @@
       "button1": "SEARCH\nOPPONENT"
     },
     "account": {
-      "title": "Account"
+      "title": "Account",
+      "heading1": "Personal information",
+      "heading2": "MY INFO",
+      "text1": "Some information are not editable. Contact customer service if you want to make any other changes.",
+      "subheading1": "Firstname",
+      "subheading2": "Lastname",
+      "subheading3": "Email",
+      "subheading4": "Phone",
+      "suubheading5": "Country"
     },
     "results": {
       "title": "Results"

@@ -5,6 +5,7 @@ import {
   settingsReducer,
   messageReducer,
   uiReducer,
+  tabReducer,
 } from './reducers';
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   settings: settingsReducer,
   message: messageReducer,
   ui: uiReducer,
+  tab: tabReducer,
 });
 
 export { rootReducer };

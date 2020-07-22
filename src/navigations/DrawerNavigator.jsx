@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { useTranslation } from 'react-i18next';
 
@@ -15,8 +15,13 @@ const DrawerNavigator = () => {
 
   const dispatch = useDispatch();
 
+  const {
+    user: { isSignIn },
+  } = useSelector((state) => state.user);
+
   return (
     <Drawer.Navigator
+      drawerContentOptions={{ gestureEnabled: false }}
       drawerContent={({ navigation }) => (
         <DrawerContent
           drawerItems={drawerItems(dispatch, navigation, t)}

@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 
 import { Grid } from '~/styles';
 
-const Column = ({ children, cols, positionY, positionX, height }) => {
+const Column = ({ children, cols, positionY, positionX, height, style }) => {
   const gridCols = {
     flexBasis: `${100 / cols}%`,
   };
@@ -14,6 +14,7 @@ const Column = ({ children, cols, positionY, positionX, height }) => {
         styles.column,
         gridCols,
         { justifyContent: positionY, alignItems: positionX, height },
+        style,
       ]}
     >
       {children}

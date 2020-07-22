@@ -4,6 +4,7 @@ export const btn = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  position: 'relative',
   margin: 5,
 };
 

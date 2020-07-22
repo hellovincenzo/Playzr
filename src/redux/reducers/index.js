@@ -3,3 +3,4 @@ export * from './userReducer';
 export * from './settingsReducer';
 export * from './messageReducer';
 export * from './uiReducer';
+export * from './tabReducer';

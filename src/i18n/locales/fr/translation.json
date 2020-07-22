@@ -32,7 +32,15 @@
       "button1": "RECHERCHE\nADVERSAIRE"
     },
     "account": {
-      "title": "Compte"
+      "title": "Compte",
+      "heading1": "Infos personnelles",
+      "heading2": "MES INFOS",
+      "text1": "Certaines informations ne sont pas éditables. Contact le service client si tu souhaites apporter d'autres modifications.",
+      "subheading1": "Prénom",
+      "subheading2": "Nom",
+      "subheading3": "Email",
+      "subheading4": "Mobile",
+      "subheading5": "Pays"
     },
     "results": {
       "title": "Résulats"
@@ -52,7 +60,7 @@
   },
   "error": {
     "login": {
-      "title": "Erreur..",
+      "title": "Erreur...",
       "text": "Email/Mot de passe incorrect!"
     },
     "password": {
