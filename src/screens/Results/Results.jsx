@@ -1,108 +1,67 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 // COMPONENTS
 import { Row, Column, Heading } from '~/components/common';
 import { Layout } from '~/components/Layout/Layout';
 
+// API
+import { getStats } from '~/API';
+
 // STYLES
 import { Colors } from '~/styles';
 
-// API
-import { getRank } from '~/API';
-import { RESULTS } from './constant';
-
 const Results = () => {
-  const [ranks, setRank] = useState([]);
+  const [stats, setStat] = useState([]);
 
   const {
     user: { token },
   } = useSelector((state) => state.user);
 
   useEffect(() => {
-    getRank(token, setRank);
+    getStats(token, setStat);
   }, []);
 
-  console.log(ranks);
+  console.log(stats);
   return (
-    <Layout>
-      <Row flex={0}>
-        {RESULTS.header.map((head) => (
-          <Column
-            style={styles.header}
-            key={head.text}
-            cols={7}
-            positionY="flex-start"
-          >
-            <Heading style={styles.headerText} text={head.text} />
-          </Column>
-        ))}
+    <ScrollView contentContainerStyle={styles.container}>
+      <Row style={styles.row}>
+        <Column cols={2} style={styles.column}>
+          <Heading
+            ComponentIcon={MaterialIcons}
+            iconName="compare-arrows"
+            iconSize={95}
+            color={Colors.colors.primary}
+          />
+        </Column>
+        <Column cols={2} style={styles.column}>
+          <Heading text="Niveau" fontType="bold" level={3} />
+          <Heading text={stats.level} />
+        </Column>
       </Row>
-
-      {ranks.map((rank, i) => (
-        <Row key={rank.id}>
-          <Column cols={7}>
-            <Heading style={styles.headerText} text={rank.id} fontType="bold" />
-          </Column>
-          <Column cols={7}>
-            <Heading
-              style={styles.headerText}
-              text={rank.username}
-              fontType="bold"
-            />
-          </Column>
-          <Column cols={7}>
-            <Heading
-              style={styles.headerText}
-              text={rank.nbMatchs}
-              fontType="bold"
-            />
-          </Column>
-          <Column cols={7}>
-            <Heading
-              style={styles.headerText}
-              text={rank.nbWins}
-              fontType="bold"
-            />
-          </Column>
-          <Column cols={7}>
-            <Heading
-              style={styles.headerText}
-              text={rank.nbLoses}
-              fontType="bold"
-            />
-          </Column>
-          <Column cols={7}>
-            <Heading
-              style={styles.headerText}
-              text={rank.diffGoals}
-              fontType="bold"
-            />
-          </Column>
-          <Column cols={7}>
-            <Heading
-              style={styles.headerText}
-              text={rank.points}
-              fontType="bold"
-            />
-          </Column>
-        </Row>
-      ))}
-    </Layout>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    backgroundColor: Colors.colors.black,
-    paddingTop: 15,
-    paddingBottom: 15,
+  container: {
+    flex: 1,
+    alignItems: 'center',
   },
-  headerText: {
-    color: Colors.colors.primary,
-    fontSize: 12,
+  row: {
+    flex: 0,
+    height: '20%',
+    width: '92%',
+    marginTop: 20,
+    backgroundColor: Colors.colors.white,
+    borderRadius: 10,
+    shadowColor: Colors.colors.silver,
+    shadowOpacity: 0.5,
+    elevation: 10,
   },
+  column: {},
 });
 
 export { Results };

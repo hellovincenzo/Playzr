@@ -1,4 +1,4 @@
-const RESULTS = {
+const RANKS = {
   header: [
     { text: '#' },
     { text: 'Gamers' },
@@ -10,4 +10,4 @@ const RESULTS = {
   ],
 };
 
-export { RESULTS };
+export { RANKS };

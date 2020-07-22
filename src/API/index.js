@@ -21,6 +21,14 @@ export const getRank = (token, setRank) =>
     .then((rank) => setRank(rank.data))
     .catch((error) => console.log(error));
 
+export const getStats = (token, setStat) =>
+  axios
+    .get(route.getStats, {
+      params: { token },
+    })
+    .then((stat) => setStat(stat.data))
+    .catch((error) => console.log(error));
+
 export const auth = (email, password, dispatch) => {
   dispatch({ type: START_FETCHING });
   axios
