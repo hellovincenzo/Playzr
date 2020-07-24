@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ScrollView, StyleSheet } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import {
+  MaterialIcons,
+  MaterialCommunityIcons,
+  FontAwesome5,
+  Feather,
+  SimpleLineIcons,
+} from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 
 // COMPONENTS
 import { Row, Column, Heading } from '~/components/common';
 import { Layout } from '~/components/Layout/Layout';
+import { ResultItems } from '~/components/ResultItems/ResultItems';
 
 // API
 import { getStats } from '~/API';
@@ -15,6 +23,7 @@ import { Colors } from '~/styles';
 
 const Results = () => {
   const [stats, setStat] = useState([]);
+  const { t } = useTranslation();
 
   const {
     user: { token },
@@ -27,20 +36,36 @@ const Results = () => {
   console.log(stats);
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Row style={styles.row}>
-        <Column cols={2} style={styles.column}>
-          <Heading
-            ComponentIcon={MaterialIcons}
-            iconName="compare-arrows"
-            iconSize={95}
-            color={Colors.colors.primary}
-          />
-        </Column>
-        <Column cols={2} style={styles.column}>
-          <Heading text="Niveau" fontType="bold" level={3} />
-          <Heading text={stats.level} />
-        </Column>
-      </Row>
+      <ResultItems
+        ComponentIcon={MaterialIcons}
+        iconName="compare-arrows"
+        heading={t('translation:pages.results.heading1')}
+        stat={stats.level}
+      />
+      <ResultItems
+        ComponentIcon={MaterialCommunityIcons}
+        iconName="medal"
+        heading={t('translation:pages.results.heading2')}
+        stat={stats.nbWins}
+      />
+      <ResultItems
+        ComponentIcon={FontAwesome5}
+        iconName="poo-storm"
+        heading={t('translation:pages.results.heading3')}
+        stat={stats.nbLoses}
+      />
+      <ResultItems
+        ComponentIcon={Feather}
+        iconName="shopping-bag"
+        heading={t('translation:pages.results.heading4')}
+        stat={stats.fifaRank}
+      />
+      <ResultItems
+        ComponentIcon={SimpleLineIcons}
+        iconName="arrow-up"
+        heading={t('translation:pages.results.heading5')}
+        stat={stats.next_level}
+      />
     </ScrollView>
   );
 };
@@ -50,18 +75,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  row: {
-    flex: 0,
-    height: '20%',
-    width: '92%',
-    marginTop: 20,
-    backgroundColor: Colors.colors.white,
-    borderRadius: 10,
-    shadowColor: Colors.colors.silver,
-    shadowOpacity: 0.5,
-    elevation: 10,
-  },
-  column: {},
 });
 
 export { Results };

@@ -43,7 +43,12 @@
       "suubheading5": "Country"
     },
     "results": {
-      "title": "Results"
+      "title": "Results",
+      "heading1": "Niveau",
+      "heading2": "Wins",
+      "heading3": "Losses",
+      "heading4": "FifaBet Rank",
+      "heading5": "Next"
     },
     "rank": {
       "title": "Rank"
