@@ -31,7 +31,7 @@ const ErrorMessage = ({ title, text }) => {
 
   const openMessagePopUp = () => {
     Animated.timing(translateY, {
-      toValue: -135,
+      toValue: -150,
       duration: 700,
     }).start();
   };
@@ -49,10 +49,10 @@ const ErrorMessage = ({ title, text }) => {
   return (
     <Animated.View style={[styles.container, animatedStyles]}>
       <Row>
-        <Column cols={2} positionX="flex-start">
+        <Column style={styles.clmn} cols={2} positionX="flex-start">
           <Text style={styles.title}>{t(title)}</Text>
         </Column>
-        <Column cols={2} positionX="flex-end">
+        <Column style={styles.clmn} cols={2} positionX="flex-end">
           <Entypo
             name="cross"
             size={30}
@@ -60,7 +60,7 @@ const ErrorMessage = ({ title, text }) => {
             onPress={closeMessagePopUp}
           />
         </Column>
-        <Column>
+        <Column style={styles.clmn}>
           <Text style={styles.text}>{t(text)}</Text>
         </Column>
       </Row>
@@ -85,6 +85,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.colors.lightgrey,
     height: 100,
     zIndex: 2,
+  },
+  clmn: {
+    height: 50,
   },
   title: {
     ...Typo.titleErrorMessage,

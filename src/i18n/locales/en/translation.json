@@ -29,7 +29,8 @@
     },
     "dashboard": {
       "title": "PLAYZR.",
-      "button1": "SEARCH\nOPPONENT"
+      "button1": "SEARCH\nOPPONENT",
+      "button2": "Quick match"
     },
     "account": {
       "title": "Account",
@@ -60,7 +61,9 @@
       "title": "Tournament"
     },
     "deposit": {
-      "title": "Deposit & Withdrawal"
+      "title": "Deposit & Withdrawal",
+      "text1": "Deposit amount",
+      "button1": "Deposit"
     }
   },
   "error": {
@@ -70,7 +73,7 @@
     },
     "password": {
       "title": "Oups!",
-      "text": "Error while reseting..."
+      "text": "Your email is incorrect..."
     },
     "signup": {
       "title": "Oups!",

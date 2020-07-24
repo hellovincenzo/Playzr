@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
+  View,
   SafeAreaView,
   ImageBackground,
   StyleSheet,
@@ -10,6 +11,9 @@ import {
   Platform,
   Dimensions,
 } from 'react-native';
+
+import { SuccessMessage } from '~/components/SuccessMessage/SuccessMessage';
+import { ErrorMessage } from '~/components/ErrorMessage/ErrorMessage';
 
 // COMPONENTS
 import { DismissKeyboard } from '~/components/common';
@@ -26,18 +30,27 @@ const Layout = ({ children, backgroundImage }) => {
   const Tag = backgroundImage ? ImageBackground : SafeAreaView;
   const behavior = Platform.OS === 'ios' ? 'padding' : 'height';
 
+  const { error } = useSelector((state) => state.message);
+  const { success } = useSelector((state) => state.message);
   useEffect(() => {
     dispatch({ type: CLEAR_MSG });
   }, []);
 
+  console.log();
   return (
     <DismissKeyboard>
       <KeyboardAvoidingView behavior={behavior} style={styles.container}>
+        {success.isSuccessShowing ? (
+          <SuccessMessage title={success.title} text={success.text} />
+        ) : null}
         <ScrollView>
           <Tag source={backgroundImage} style={styles.background}>
-            {children}
+            <View style={styles.container}>{children}</View>
           </Tag>
         </ScrollView>
+        {error.isErrorShowing ? (
+          <ErrorMessage title={error.title} text={error.text} />
+        ) : null}
       </KeyboardAvoidingView>
     </DismissKeyboard>
   );
@@ -53,9 +66,9 @@ const styles = StyleSheet.create({
     width: Math.round(Dimensions.get('window').width),
     height: Math.round(Dimensions.get('window').height),
   },
-
   container: {
     flex: 1,
+    position: 'relative',
   },
 });
 

@@ -27,12 +27,6 @@ const AppContainer = () => {
   return (
     <NavigationContainer>
       <StatusBar barStyle="default" />
-      {success.isSuccessShowing ? (
-        <SuccessMessage title={success.title} text={success.text} />
-      ) : null}
-      {error.isErrorShowing ? (
-        <ErrorMessage title={error.title} text={error.text} />
-      ) : null}
       <AppPlayzr />
     </NavigationContainer>
   );

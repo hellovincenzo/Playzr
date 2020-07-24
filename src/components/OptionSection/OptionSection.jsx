@@ -9,7 +9,6 @@ import { Colors } from '~/styles';
 
 const OptionSection = ({ options, t, navigation }) => (
   <FlatList
-    style={styles.optionSectionContainer}
     contentContainerStyle={styles.contentContainerStyle}
     numColumns={2}
     data={options}
@@ -20,7 +19,8 @@ const OptionSection = ({ options, t, navigation }) => (
         onPress={() => navigation.navigate(item.goTo)}
       >
         <Heading
-          text={t(item.label)}
+          style={styles.optionLabel}
+          text={t(item.label).replace(' ', '\n')}
           color="white"
           fontType="medium"
           iconName={item.name}
@@ -37,19 +37,18 @@ const OptionSection = ({ options, t, navigation }) => (
 );
 
 const styles = StyleSheet.create({
-  optionSectionContainer: {
-    height: '100%',
-  },
+  optionSectionContainer: {},
   contentContainerStyle: {
-    flex: 0.7,
-    alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   optionButton: {
     height: null,
-    width: '48%',
+    width: '47.5%',
     paddingTop: 5,
   },
+  optionLabel: { textAlign: 'center' },
   optionIcon: {
     paddingBottom: 5,
   },

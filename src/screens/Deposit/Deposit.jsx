@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import { StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
@@ -14,20 +13,17 @@ import { Colors } from '~/styles';
 // CONSTANT
 import { DEPOSIT } from './constant';
 
-const Deposit = ({ navigation }) => {
+const Deposit = () => {
   const { t } = useTranslation();
-
-  const dispatch = useDispatch();
-
-  const {
-    ui: { isLoading },
-  } = useSelector((state) => state);
 
   return (
     <Layout>
       <Row style={styles.row}>
         <Column style={[styles.column, styles.amountContainer]}>
-          <Heading style={styles.amountText} text="Deposit amount" />
+          <Heading
+            style={styles.amountText}
+            text={t('translation:pages.deposit.text1')}
+          />
           <Input
             style={styles.amountInput}
             placeholder="XX"
@@ -56,7 +52,7 @@ const Deposit = ({ navigation }) => {
           </Column>
         ))}
         <Column style={{ height: '10%' }}>
-          <Btn text="Deposer" borderedPrimary />
+          <Btn text={t('translation:pages.deposit.button1')} borderedPrimary />
         </Column>
       </Row>
     </Layout>

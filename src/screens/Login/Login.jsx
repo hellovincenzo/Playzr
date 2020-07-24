@@ -19,8 +19,8 @@ import logo from '~/assets/logo.png';
 import { auth } from '~/API';
 
 const Login = ({ navigation }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('vincenzo33.pellegrini@gmail.com');
+  const [password, setPassword] = useState('2npi7Ain8ynpYvm');
 
   const { t } = useTranslation();
 

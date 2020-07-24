@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, FontAwesome } from '@expo/vector-icons';
 
 // COMPONENTS
 import { Row, Column, Heading, Btn } from '~/components/common';
@@ -83,6 +83,17 @@ const Dashboard = ({ navigation }) => {
             navigation={navigation}
           />
         </Row>
+        <Row style={{ backgroundColor: Colors.colors.white }} flex={0.2}>
+          <Btn style={styles.quickMatchButton}>
+            <>
+              <Heading ComponentIcon={FontAwesome} iconName="soccer-ball-o" />
+              <Heading
+                text={t('translation:pages.dashboard.button2')}
+                fontType="bold"
+              />
+            </>
+          </Btn>
+        </Row>
       </Layout>
     )
   );
@@ -92,13 +103,20 @@ const styles = StyleSheet.create({
   userDetailsContainer: {
     paddingLeft: 15,
   },
+  searchOppnentButton: {
+    width: '98%',
+    marginTop: 15,
+  },
   optionsContainer: {
     paddingLeft: 25,
     paddingRight: 25,
+    justifyContent: 'center',
   },
-  searchOppnentButton: {
-    width: '98%',
-    marginTop: 25,
+  quickMatchButton: {
+    width: '100%',
+    height: '100%',
+    marginLeft: 0,
+    marginTop: 0,
   },
 });
 
