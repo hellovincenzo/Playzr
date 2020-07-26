@@ -76,8 +76,15 @@
       "text": "Your email is incorrect..."
     },
     "signup": {
-      "title": "Oups!",
-      "text": "All input fields required!"
+      "title": "Erreur...",
+      "text": "All input fields required!",
+      "input1": "Firstname required!",
+      "input2": "Lastname required!",
+      "input3": "Email is missing or incorrect!",
+      "input4": "Platform required(ex: PC - PS4 or other..)",
+      "input5": "Pseudo required!",
+      "input6": "Your password has to be 6 characters length min!",
+      "input7": "Country requis!"
     }
   },
   "success": {
@@ -99,5 +106,8 @@
     "label6": "Tournament",
     "label7": "Deposit & Withdrawal",
     "label8": "Sign out"
+  },
+  "tab": {
+    "name1": "Quick match"
   }
 }

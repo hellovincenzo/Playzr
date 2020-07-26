@@ -76,14 +76,20 @@ const Dashboard = ({ navigation }) => {
             />
           </Column>
         </Row>
-        <Row style={styles.optionsContainer}>
+        <Row flex={0.5} style={styles.optionsContainer}>
           <OptionSection
             options={DASHBOARD.options}
             t={t}
             navigation={navigation}
           />
         </Row>
-        <Row style={{ backgroundColor: Colors.colors.white }} flex={0.2}>
+        {/* <Row
+          flex={0.3}
+          style={{
+            borderWidth: 1,
+            borderColor: 'red',
+          }}
+        >
           <Btn style={styles.quickMatchButton}>
             <>
               <Heading ComponentIcon={FontAwesome} iconName="soccer-ball-o" />
@@ -93,7 +99,7 @@ const Dashboard = ({ navigation }) => {
               />
             </>
           </Btn>
-        </Row>
+        </Row> */}
       </Layout>
     )
   );
@@ -113,8 +119,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   quickMatchButton: {
+    backgroundColor: Colors.colors.white,
     width: '100%',
-    height: '100%',
+    height: 105,
     marginLeft: 0,
     marginTop: 0,
   },

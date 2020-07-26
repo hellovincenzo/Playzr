@@ -1,7 +1,7 @@
 import { SET_TAB_VISIBLE } from '~/redux/types/tabTypes';
 
 const init = {
-  routesAllowed: 'Dashboard',
+  routesAllowed: ['Dashboard'],
   tabBarVisible: false,
 };
 
@@ -10,7 +10,7 @@ const tabReducer = (state = init, action) => {
     case SET_TAB_VISIBLE:
       return {
         ...state,
-        tabBarVisible: state.routesAllowed === action.route,
+        tabBarVisible: action.tabBarVisible,
       };
     default:
       return state;

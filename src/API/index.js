@@ -85,12 +85,25 @@ export const signup = (
       }
     })
     .catch((error) => {
+      const err = {};
+      let er = '';
       if (error) {
+        if (!firstname) err.firstname = 'translation:error.signup.input1';
+        if (!lastname) err.lastname = 'translation:error.signup.input2';
+        if (!email) err.email = 'translation:error.signup.input3';
+        if (!game_platform)
+          err.game_platform = 'translation:error.signup.input4';
+        if (!game_username)
+          err.game_username = 'translation:error.signup.input5';
+        if (!password || password.length !== 6)
+          err.password = 'translation:error.signup.input6';
+        if (!country) err.country = 'translation:error.signup.input7';
+
         dispatch({ type: STOP_FETCHING });
         dispatch({
           type: ERROR_MSG,
           title: 'translation:error.signup.title',
-          text: 'translation:error.signup.text',
+          text: Object.keys(err).map((erreur) => err[erreur]),
         });
       }
     });

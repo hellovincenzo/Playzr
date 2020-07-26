@@ -1,31 +1,39 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import { StackNavigator } from './StackNavigator';
 
-// REDUX TYPES
-import { SET_TAB_VISIBLE } from '~/redux/types/tabTypes';
+// COMPONENTS
+import { TabBar } from '~/components/TabBar/TabBar';
 
 const TabNavigator = () => {
+  const [tabBarVisible, setTabBarVisible] = useState(false);
+
   const Tab = createBottomTabNavigator();
 
-  const dispatch = useDispatch();
-
   const {
-    user: { isSignIn },
-  } = useSelector((state) => state.user);
-
-  const {
-    tab: { tabBarVisible },
+    tab: { routesAllowed },
   } = useSelector((state) => state);
 
+  const screenOptions = ({ route }) => {
+    if (route && route.state) {
+      const { routes } = route.state;
+      const last = routes ? routes[routes.length - 1] : null;
+      setTabBarVisible(routesAllowed.includes(last.name));
+    }
+  };
+
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={screenOptions}
+      tabBar={() => <TabBar isAllowedScreen={tabBarVisible} />}
+    >
       <Tab.Screen
-        name="Match rapide"
+        name="Quick match"
         component={StackNavigator}
-        options={{ tabBarVisible }}
+        options={{
+          tabBarVisible,
+        }}
       />
     </Tab.Navigator>
   );

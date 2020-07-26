@@ -15,7 +15,7 @@ import { signup } from '~/API';
 // SIGNUP CONSTANT
 import { SIGNUP } from './constant';
 
-const Signup = ({ navigation }) => {
+const Signup = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 

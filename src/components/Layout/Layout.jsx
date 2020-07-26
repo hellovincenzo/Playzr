@@ -32,6 +32,7 @@ const Layout = ({ children, backgroundImage }) => {
 
   const { error } = useSelector((state) => state.message);
   const { success } = useSelector((state) => state.message);
+
   useEffect(() => {
     dispatch({ type: CLEAR_MSG });
   }, []);
