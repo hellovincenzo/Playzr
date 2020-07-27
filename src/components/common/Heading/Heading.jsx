@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 
+// COMPONENTS
+import { Row, Column } from '~/components/common';
+
 // STYLES
 import { Colors } from '~/styles';
 
@@ -90,7 +93,7 @@ const Heading = ({
                   style={headingIconStyles}
                   name={iconName}
                   size={iconSize}
-                  color={color || iconColor}
+                  color={iconColor || color}
                 />
               )}
               {text}

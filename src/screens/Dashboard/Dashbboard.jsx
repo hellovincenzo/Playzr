@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { Entypo, FontAwesome } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 // COMPONENTS
 import { Row, Column, Heading, Btn } from '~/components/common';
@@ -17,7 +17,7 @@ import { Colors } from '~/styles';
 import fondplay from '~/assets/fondplay.png';
 
 // API
-import { getUser } from '~/API';
+import { getUser, getBets } from '~/API';
 
 // CONSTANTS
 import { DASHBOARD } from './constant';
@@ -34,6 +34,7 @@ const Dashboard = ({ navigation }) => {
 
   useEffect(() => {
     getUser(token, id, setUserData);
+    getBets(dispatch);
   }, []);
 
   return (
@@ -83,23 +84,6 @@ const Dashboard = ({ navigation }) => {
             navigation={navigation}
           />
         </Row>
-        {/* <Row
-          flex={0.3}
-          style={{
-            borderWidth: 1,
-            borderColor: 'red',
-          }}
-        >
-          <Btn style={styles.quickMatchButton}>
-            <>
-              <Heading ComponentIcon={FontAwesome} iconName="soccer-ball-o" />
-              <Heading
-                text={t('translation:pages.dashboard.button2')}
-                fontType="bold"
-              />
-            </>
-          </Btn>
-        </Row> */}
       </Layout>
     )
   );
@@ -117,13 +101,6 @@ const styles = StyleSheet.create({
     paddingLeft: 25,
     paddingRight: 25,
     justifyContent: 'center',
-  },
-  quickMatchButton: {
-    backgroundColor: Colors.colors.white,
-    width: '100%',
-    height: 105,
-    marginLeft: 0,
-    marginTop: 0,
   },
 });
 

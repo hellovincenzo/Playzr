@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { Text, StyleSheet, Animated } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, MaterialIcons } from '@expo/vector-icons';
 
 // COLORS
 import { Colors, Typo } from '~/styles';
 
 // COMPONENTS
-import { Row, Column } from '~/components/common';
+import { Row, Column, Heading } from '~/components/common';
 
 // REDUX TYPES
 import { CLEAR_MSG } from '~/redux/types/messageTypes';
 
-const ErrorMessage = ({ title, text }) => {
+const ErrorMessage = ({ title, texts }) => {
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
@@ -49,10 +49,10 @@ const ErrorMessage = ({ title, text }) => {
   return (
     <Animated.View style={[styles.container, animatedStyles]}>
       <Row>
-        <Column style={styles.clmn} cols={2} positionX="flex-start">
+        <Column style={styles.clmnTitle} cols={2} positionX="flex-start">
           <Text style={styles.title}>{t(title)}</Text>
         </Column>
-        <Column style={styles.clmn} cols={2} positionX="flex-end">
+        <Column style={styles.clmnTitle} cols={2} positionX="flex-end">
           <Entypo
             name="cross"
             size={30}
@@ -60,8 +60,25 @@ const ErrorMessage = ({ title, text }) => {
             onPress={closeMessagePopUp}
           />
         </Column>
-        <Column style={styles.clmn}>
-          <Text style={styles.text}>{t(text)}</Text>
+        <Column style={styles.clmnText}>
+          {texts.map((text) => (
+            <Row key={text}>
+              <Column style={{ flexBasis: '10%' }} cols={2}>
+                <MaterialIcons
+                  name="error-outline"
+                  color={Colors.colors.primary}
+                  size={30}
+                />
+              </Column>
+              <Column
+                style={{ flexBasis: '90%' }}
+                cols={2}
+                positionX="flex-start"
+              >
+                <Heading text={t(text)} />
+              </Column>
+            </Row>
+          ))}
         </Column>
       </Row>
     </Animated.View>
@@ -70,12 +87,12 @@ const ErrorMessage = ({ title, text }) => {
 
 ErrorMessage.defaultProps = {
   title: 'Title',
-  text: 'Text',
+  texts: [],
 };
 
 ErrorMessage.propTypes = {
   title: PropTypes.string,
-  text: PropTypes.string,
+  texts: PropTypes.array,
 };
 
 const styles = StyleSheet.create({
@@ -83,11 +100,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: -150,
     backgroundColor: Colors.colors.lightgrey,
-    height: 100,
+    height: 300,
     zIndex: 2,
   },
-  clmn: {
+  clmnTitle: {
     height: 50,
+  },
+  clmnText: {
+    height: 250,
   },
   title: {
     ...Typo.titleErrorMessage,

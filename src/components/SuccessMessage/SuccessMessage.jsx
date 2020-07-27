@@ -30,7 +30,7 @@ const SuccessMessage = ({ title, text }) => {
 
   const openMessagePopUp = () => {
     Animated.timing(translateY, {
-      toValue: 35,
+      toValue: 0,
       duration: 700,
     }).start();
   };

@@ -77,14 +77,14 @@
     },
     "signup": {
       "title": "Erreur...",
-      "text": "All input fields required!",
+      "text": "All input fields required! Please double check that you have entered a valid email and that your password contains 6 characters mini.",
       "input1": "Firstname required!",
       "input2": "Lastname required!",
-      "input3": "Email is missing or incorrect!",
-      "input4": "Platform required(ex: PC - PS4 or other..)",
+      "input3": "Email missing or incorrect!",
+      "input4": "Platform required",
       "input5": "Pseudo required!",
-      "input6": "Your password has to be 6 characters length min!",
-      "input7": "Country requis!"
+      "input6": "Password: 6 characters length min!",
+      "input7": "Country required!"
     }
   },
   "success": {

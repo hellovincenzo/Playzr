@@ -6,6 +6,7 @@ import {
   messageReducer,
   uiReducer,
   tabReducer,
+  betReducer,
 } from './reducers';
 
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   message: messageReducer,
   ui: uiReducer,
   tab: tabReducer,
+  bets: betReducer,
 });
 
 export { rootReducer };

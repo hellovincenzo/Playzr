@@ -50,7 +50,7 @@ const Layout = ({ children, backgroundImage }) => {
           </Tag>
         </ScrollView>
         {error.isErrorShowing ? (
-          <ErrorMessage title={error.title} text={error.text} />
+          <ErrorMessage title={error.title} texts={error.text} />
         ) : null}
       </KeyboardAvoidingView>
     </DismissKeyboard>

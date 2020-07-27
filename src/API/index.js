@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-import { route } from './constant';
-import { SIGN_IN, GET_USER } from '~/redux/types/userTypes';
+import { SIGN_IN } from '~/redux/types/userTypes';
 import { SUCCESS_MSG, ERROR_MSG } from '~/redux/types/messageTypes';
 import { START_FETCHING, STOP_FETCHING } from '~/redux/types/uiTypes';
+import { GET_BET } from '~/redux/types/getBetType';
+import { route } from './constant';
 
 export const getUser = (token, id, setUser) =>
   axios
@@ -29,6 +30,12 @@ export const getStats = (token, setStat) =>
     .then((stat) => setStat(stat.data))
     .catch((error) => console.log(error));
 
+export const getBets = (dispatch) =>
+  axios
+    .get(route.getBets)
+    .then((bets) => dispatch({ type: GET_BET, bets }))
+    .catch((error) => console.log(error));
+
 export const auth = (email, password, dispatch) => {
   dispatch({ type: START_FETCHING });
   axios
@@ -43,13 +50,18 @@ export const auth = (email, password, dispatch) => {
     })
     .catch((error) => {
       console.log(error.message);
-      dispatch({ type: STOP_FETCHING });
+      const err = {};
 
-      dispatch({
-        type: ERROR_MSG,
-        title: 'translation:error.login.title',
-        text: 'translation:error.login.text',
-      });
+      if (error) {
+        if (!email || !password) err.firstname = 'translation:error.login.text';
+
+        dispatch({ type: STOP_FETCHING });
+        dispatch({
+          type: ERROR_MSG,
+          title: 'translation:error.login.title',
+          text: Object.keys(err).map((erreur) => err[erreur]),
+        });
+      }
     });
 };
 
@@ -86,7 +98,7 @@ export const signup = (
     })
     .catch((error) => {
       const err = {};
-      let er = '';
+
       if (error) {
         if (!firstname) err.firstname = 'translation:error.signup.input1';
         if (!lastname) err.lastname = 'translation:error.signup.input2';
@@ -135,4 +147,15 @@ export const resetPassowrd = (email, dispatch) => {
         });
       }
     });
+};
+
+export const matchFinder = (token, bet, dispatch) => {
+  // dispatch({ type: START_FETCHING });
+  axios
+    .post(route.matchFinder, {
+      token,
+      bet,
+    })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };

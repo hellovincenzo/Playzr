@@ -77,13 +77,13 @@
     },
     "signup": {
       "title": "Erreur...",
-      "text": "Tout les champs sont requis!",
+      "text": "Tout les champs sont requis! Veuillez vérifier à ce que votre adresse email soit valide et que votre mot de passe contienne 6 caractères minimum.",
       "input1": "Prénom requis!",
       "input2": "Nom requis!",
       "input3": "Email requis ou incorrect!",
-      "input4": "Platform demandé(ex: PC - PS4 ou autre..)",
+      "input4": "Platforme requis!",
       "input5": "Pseudo requis!",
-      "input6": "Mot de passe doit comprendre 6 characters min!",
+      "input6": "Mot de passe: 6 characters min!",
       "input7": "Pays requis!"
     }
   },
