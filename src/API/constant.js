@@ -9,6 +9,7 @@ const GET_USER = 'getUser';
 const GET_RANK = 'getRanking';
 const GET_STATS = 'getStats';
 const GET_BETS = 'getBets';
+const GET_MATCH = 'getMatch';
 
 const route = {
   login: `${baseURL}${LOGIN}`,
@@ -19,6 +20,7 @@ const route = {
   getRanking: `${baseURL}${GET_RANK}`,
   getStats: `${baseURL}${GET_STATS}`,
   getBets: `${baseURL}${GET_BETS}`,
+  getMatch: `${baseURL}${GET_MATCH}`,
 };
 
 export { route };

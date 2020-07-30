@@ -1,10 +1,11 @@
 import axios from 'axios';
 
+import { route } from './constant';
+
+import { GET_BET } from '~/redux/types/getBetType';
 import { SIGN_IN } from '~/redux/types/userTypes';
 import { SUCCESS_MSG, ERROR_MSG } from '~/redux/types/messageTypes';
 import { START_FETCHING, STOP_FETCHING } from '~/redux/types/uiTypes';
-import { GET_BET } from '~/redux/types/getBetType';
-import { route } from './constant';
 
 export const getUser = (token, id, setUser) =>
   axios
@@ -35,6 +36,23 @@ export const getBets = (dispatch) =>
     .get(route.getBets)
     .then((bets) => dispatch({ type: GET_BET, bets }))
     .catch((error) => console.log(error));
+
+export const getMatch = (token, n, dispatch) => {
+  axios
+    .get(route.getMatch, {
+      params: {
+        token,
+      },
+    })
+    .then((match) => {
+      if (n === 0) {
+        console.log('N is 0', match.data);
+        dispatch({ type: STOP_FETCHING });
+      }
+      getMatch(token, n - 1, dispatch);
+    })
+    .catch((err) => console.log(err));
+};
 
 export const auth = (email, password, dispatch) => {
   dispatch({ type: START_FETCHING });
@@ -150,12 +168,19 @@ export const resetPassowrd = (email, dispatch) => {
 };
 
 export const matchFinder = (token, bet, dispatch) => {
-  // dispatch({ type: START_FETCHING });
+  dispatch({ type: START_FETCHING });
   axios
     .post(route.matchFinder, {
       token,
       bet,
     })
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+    .then((res) => {
+      if (res.data) {
+        console.log(res.data);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: STOP_FETCHING });
+    });
 };

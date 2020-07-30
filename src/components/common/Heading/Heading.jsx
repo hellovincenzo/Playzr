@@ -2,9 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 
-// COMPONENTS
-import { Row, Column } from '~/components/common';
-
 // STYLES
 import { Colors } from '~/styles';
 
@@ -115,7 +112,7 @@ Heading.defaultProps = {
 
 Heading.propTypes = {
   level: PropTypes.number,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   fontType: PropTypes.string,
   color: PropTypes.string,
 };

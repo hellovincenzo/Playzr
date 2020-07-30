@@ -39,8 +39,12 @@ const styles = StyleSheet.create({
   },
 });
 
+AddMoney.defaultProps = {
+  balance: '',
+};
+
 AddMoney.propTypes = {
-  balance: PropTypes.string.isRequired,
+  balance: PropTypes.string,
 };
 
 export { AddMoney };

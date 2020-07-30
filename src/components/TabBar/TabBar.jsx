@@ -1,34 +1,49 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { FontAwesome } from '@expo/vector-icons';
 
 // COMPONENTS
 import { Heading, Btn } from '~/components/common';
+import { RotateView } from '~/components/RotateView/RotateView';
 
 // STYLES
 import { Colors } from '~/styles';
 
-import { matchFinder } from '~/API';
+// API
+import { matchFinder, getMatch } from '~/API';
 
 const TabBar = ({ isAllowedScreen }) => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const {
     user: { token },
   } = useSelector((state) => state.user);
 
-  const { bets } = useSelector((state) => state);
+  const {
+    ui: { isLoading },
+  } = useSelector((state) => state);
 
-  const quicMatch = () => matchFinder(token, bets[0]);
+  const { bets } = useSelector((state) => state.bets);
+
+  const Tag = isLoading ? RotateView : View;
+  const quicMatch = async () => {
+    await matchFinder(token, 10, dispatch);
+    await getMatch(token, 5, dispatch);
+  };
 
   return (
     isAllowedScreen && (
       <Btn style={styles.tabBar} onPress={quicMatch}>
         <>
-          <Heading ComponentIcon={FontAwesome} iconName="soccer-ball-o" />
-          <Heading text={t('translation:tab.name1')} fontType="bold" />
+          <Tag>
+            <Heading ComponentIcon={FontAwesome} iconName="soccer-ball-o" />
+          </Tag>
+          {!isLoading && (
+            <Heading text={t('translation:tab.name1')} fontType="bold" />
+          )}
         </>
       </Btn>
     )
