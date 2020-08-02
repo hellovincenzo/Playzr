@@ -109,5 +109,12 @@
   },
   "tab": {
     "name1": "Quick match"
+  },
+  "modal": {
+    "modalBetOptions": {
+      "title1": "Bet",
+      "heading1": "Choose the amount of your bet.",
+      "button1": "Choose"
+    }
   }
 }

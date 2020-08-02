@@ -9,12 +9,16 @@ import { Row, Column, Heading, Btn } from '~/components/common';
 import { Layout } from '~/components/Layout/Layout';
 import { OptionSection } from '~/components/OptionSection/OptionSection';
 import { AddMoney } from '~/components/AddMoney/AddMoney';
+import { ModalBetOptions } from '~/components/ModalBetOptions/ModalBetOptions';
 
 // STYLES
 import { Colors } from '~/styles';
 
 // ASSETS
 import fondplay from '~/assets/fondplay.png';
+
+// REDUX TYPE
+import { TOGGLE_MODAL } from '~/redux/types/modalType';
 
 // API
 import { getUser, getBets } from '~/API';
@@ -31,6 +35,10 @@ const Dashboard = ({ navigation }) => {
   const {
     user: { token, id },
   } = useSelector((state) => state.user);
+
+  const { bets } = useSelector((state) => state.bets);
+
+  const toggleModal = () => dispatch({ type: TOGGLE_MODAL });
 
   useEffect(() => {
     getUser(token, id, setUserData);
@@ -84,6 +92,12 @@ const Dashboard = ({ navigation }) => {
             navigation={navigation}
           />
         </Row>
+        <ModalBetOptions
+          title={t('translation:modal.modalBetOptions.title1')}
+          heading={t('translation:modal.modalBetOptions.heading1')}
+          buttonText={t('translation:modal.modalBetOptions.button1')}
+          bets={bets}
+        />
       </Layout>
     )
   );

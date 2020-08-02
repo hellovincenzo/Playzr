@@ -4,6 +4,9 @@ import { View, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { FontAwesome } from '@expo/vector-icons';
 
+// REDUX TYPE
+import { TOGGLE_MODAL } from '~/redux/types/modalType';
+
 // COMPONENTS
 import { Heading, Btn } from '~/components/common';
 import { RotateView } from '~/components/RotateView/RotateView';
@@ -29,14 +32,17 @@ const TabBar = ({ isAllowedScreen }) => {
   const { bets } = useSelector((state) => state.bets);
 
   const Tag = isLoading ? RotateView : View;
+
   const quicMatch = async () => {
     await matchFinder(token, 10, dispatch);
     await getMatch(token, 5, dispatch);
   };
 
+  const toggleModal = () => dispatch({ type: TOGGLE_MODAL });
+
   return (
     isAllowedScreen && (
-      <Btn style={styles.tabBar} onPress={quicMatch}>
+      <Btn style={styles.tabBar} onPress={toggleModal}>
         <>
           <Tag>
             <Heading ComponentIcon={FontAwesome} iconName="soccer-ball-o" />

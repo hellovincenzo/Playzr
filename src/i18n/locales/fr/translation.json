@@ -109,6 +109,13 @@
   },
   "tab": {
     "name1": "Match rapide"
+  },
+  "modal": {
+    "modalBetOptions": {
+      "title1": "Parier",
+      "heading1": "Choisissez le montant de votre mise.",
+      "button1": "Choisir"
+    }
   }
 
 }
