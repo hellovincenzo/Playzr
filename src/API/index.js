@@ -3,16 +3,16 @@ import axios from 'axios';
 import { route } from './constant';
 
 import { GET_BET } from '~/redux/types/getBetType';
-import { SIGN_IN } from '~/redux/types/userTypes';
+import { SIGN_IN, GET_USER } from '~/redux/types/userTypes';
 import { SUCCESS_MSG, ERROR_MSG } from '~/redux/types/messageTypes';
 import { START_FETCHING, STOP_FETCHING } from '~/redux/types/uiTypes';
 
-export const getUser = (token, id, setUser) =>
+export const getUser = (token, id, dispatch) =>
   axios
     .get(route.getUser, {
       params: { token, id },
     })
-    .then((user) => setUser(user.data.user))
+    .then((user) => dispatch({ type: GET_USER, user }))
     .catch((error) => console.log(error));
 
 export const getRank = (token, setRank) =>
@@ -38,6 +38,7 @@ export const getBets = (dispatch) =>
     .catch((error) => console.log(error));
 
 export const getMatch = (token, n, dispatch) => {
+  dispatch({ type: START_FETCHING });
   axios
     .get(route.getMatch, {
       params: {
@@ -45,13 +46,15 @@ export const getMatch = (token, n, dispatch) => {
       },
     })
     .then((match) => {
+      dispatch({ type: STOP_FETCHING });
+      console.log(match.data);
+    })
+    .catch((err) => {
       if (n === 0) {
-        console.log('N is 0', match.data);
-        dispatch({ type: STOP_FETCHING });
+        return dispatch({ type: STOP_FETCHING });
       }
       getMatch(token, n - 1, dispatch);
-    })
-    .catch((err) => console.log(err));
+    });
 };
 
 export const auth = (email, password, dispatch) => {
@@ -63,6 +66,7 @@ export const auth = (email, password, dispatch) => {
       const { token, user_id } = result.data;
 
       if (token && user_id) {
+        getUser(token, user_id, dispatch);
         dispatch({ type: SIGN_IN, token, id: user_id });
       }
     })

@@ -21,6 +21,10 @@ export const borderedPrimary = {
   backgroundColor: colors.primary,
 };
 
+export const borderedPrimaryLoading = {
+  ...borderedPrimary,
+  opacity: 0.5,
+};
 export const borderedWhite = {
   ...bordered,
   backgroundColor: colors.white,

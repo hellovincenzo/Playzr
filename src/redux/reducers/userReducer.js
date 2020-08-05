@@ -15,6 +15,7 @@ const userReducer = (state = init, action) => {
       return {
         ...state,
         user: {
+          ...state.user,
           isSignIn: true,
           token: action.token,
           id: action.id,
@@ -25,6 +26,7 @@ const userReducer = (state = init, action) => {
       return {
         ...state,
         user: {
+          ...state.user,
           isSignIn: false,
           token: '',
           id: '',
@@ -34,7 +36,10 @@ const userReducer = (state = init, action) => {
     case GET_USER:
       return {
         ...state,
-        data: action.user,
+        user: {
+          data: action.user.data.user,
+          ...state.user,
+        },
       };
 
     default:

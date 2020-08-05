@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
@@ -17,36 +17,32 @@ import { Colors } from '~/styles';
 // ASSETS
 import fondplay from '~/assets/fondplay.png';
 
-// REDUX TYPE
-import { TOGGLE_MODAL } from '~/redux/types/modalType';
-
 // API
-import { getUser, getBets } from '~/API';
+import { getBets } from '~/API';
 
 // CONSTANTS
 import { DASHBOARD } from './constant';
 
 const Dashboard = ({ navigation }) => {
-  const [userData, setUserData] = useState({});
-
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const {
-    user: { token, id },
+    user: { data },
   } = useSelector((state) => state.user);
 
   const { bets } = useSelector((state) => state.bets);
 
-  const toggleModal = () => dispatch({ type: TOGGLE_MODAL });
+  const {
+    ui: { isLoading },
+  } = useSelector((state) => state);
 
   useEffect(() => {
-    getUser(token, id, setUserData);
     getBets(dispatch);
   }, []);
 
   return (
-    userData && (
+    data && (
       <Layout backgroundImage={fondplay}>
         <Row
           flex={0.3}
@@ -55,14 +51,14 @@ const Dashboard = ({ navigation }) => {
         >
           <Column cols={2} positionX="flex-start">
             <Heading
-              text={userData.game_username}
+              text={data.game_username}
               color="white"
               fontType="bold"
               ComponentIcon={Entypo}
               iconName="email"
             />
             <Heading
-              text={userData.country}
+              text={data.country}
               color="white"
               fontType="bold"
               ComponentIcon={Entypo}
@@ -70,7 +66,7 @@ const Dashboard = ({ navigation }) => {
             />
           </Column>
           <Column cols={2} positionX="flex-end">
-            <AddMoney balance={userData.balance} />
+            <AddMoney balance={data.balance} />
           </Column>
         </Row>
         <Row flex={0} style={styles.optionsContainer}>
@@ -81,6 +77,7 @@ const Dashboard = ({ navigation }) => {
               textColor={Colors.colors.white}
               font="bold"
               fontSize={23}
+              onPress={() => dispatch({ type: 'STOP_FETCHING' })}
               borderedPrimary
             />
           </Column>
@@ -90,6 +87,7 @@ const Dashboard = ({ navigation }) => {
             options={DASHBOARD.options}
             t={t}
             navigation={navigation}
+            isLoading={isLoading}
           />
         </Row>
         <ModalBetOptions

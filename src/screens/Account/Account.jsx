@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
@@ -10,22 +10,12 @@ import { Layout } from '~/components/Layout/Layout';
 // STYLES
 import { Colors } from '~/styles';
 
-// API
-import { getUser } from '~/API';
-
-const Account = ({ navigation }) => {
-  const [userData, setUserData] = useState({});
-
-  const dispatch = useDispatch();
+const Account = () => {
   const { t } = useTranslation();
 
   const {
-    user: { token, id },
+    user: { data },
   } = useSelector((state) => state.user);
-
-  useEffect(() => {
-    getUser(token, id, setUserData);
-  }, []);
 
   return (
     <Layout>
@@ -62,7 +52,7 @@ const Account = ({ navigation }) => {
             text={t('translation:pages.account.subheading1')}
             fontType="medium"
           />
-          <Heading text={userData.firstname} color={Colors.colors.silver} />
+          <Heading text={data.firstname} color={Colors.colors.silver} />
         </Column>
       </Row>
       <Row flex={0.3}>
@@ -75,7 +65,7 @@ const Account = ({ navigation }) => {
             text={t('translation:pages.account.subheading2')}
             fontType="medium"
           />
-          <Heading text={userData.lastname} color={Colors.colors.silver} />
+          <Heading text={data.lastname} color={Colors.colors.silver} />
         </Column>
       </Row>
       <Row flex={0.3}>
@@ -88,7 +78,7 @@ const Account = ({ navigation }) => {
             text={t('translation:pages.account.subheading3')}
             fontType="medium"
           />
-          <Heading text={userData.email} color={Colors.colors.silver} />
+          <Heading text={data.email} color={Colors.colors.silver} />
         </Column>
       </Row>
       <Row>
@@ -101,7 +91,7 @@ const Account = ({ navigation }) => {
             text={t('translation:pages.account.subheading5')}
             fontType="medium"
           />
-          <Heading text={userData.country} color={Colors.colors.silver} />
+          <Heading text={data.country} color={Colors.colors.silver} />
         </Column>
       </Row>
     </Layout>

@@ -85,6 +85,10 @@
       "input5": "Pseudo required!",
       "input6": "Password: 6 characters length min!",
       "input7": "Country required!"
+    },
+    "bet": {
+      "title": "BALANCE TOO LOW!",
+      "text": "Your balance is too low, top up your balance and try again."
     }
   },
   "success": {
@@ -95,6 +99,10 @@
     "signup": {
       "title": "CONGRATULATION!",
       "text": "Your account has been created successufully!"
+    },
+    "bet": {
+      "title": "CONGRATULATION!",
+      "text": "We're looking for an opponent..."
     }
   },
   "drawer": {
@@ -115,6 +123,10 @@
       "title1": "Bet",
       "heading1": "Choose the amount of your bet.",
       "button1": "Choose"
+    },
+    "modalAlert": {
+      "title": "Do you confirm your bet ?",
+      "msg": "You would you like to confirm your bet of"
     }
   }
 }

@@ -7,7 +7,7 @@ import { Btn, Heading } from '~/components/common';
 // STYLES
 import { Colors } from '~/styles';
 
-const OptionSection = ({ options, t, navigation }) => (
+const OptionSection = ({ options, t, navigation, isLoading }) => (
   <FlatList
     contentContainerStyle={styles.contentContainerStyle}
     numColumns={2}
@@ -17,6 +17,7 @@ const OptionSection = ({ options, t, navigation }) => (
         style={styles.optionButton}
         borderedPrimary
         onPress={() => navigation.navigate(item.goTo)}
+        isLoading={isLoading}
       >
         <Heading
           style={styles.optionLabel}

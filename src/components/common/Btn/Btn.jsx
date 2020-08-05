@@ -33,6 +33,9 @@ const Btn = ({
     }
   } else if (borderedPrimary) {
     btnStyles = styles.btnBorderedPrimary;
+    if (isLoading) {
+      btnStyles = styles.btnBorderedPrimaryLoading;
+    }
   } else if (borderedWhite) {
     btnStyles = styles.btnBorderedWhite;
   } else if (borderBottom) {
@@ -97,6 +100,9 @@ const styles = StyleSheet.create({
   },
   btnBorderedPrimary: {
     ...BtnStyles.borderedPrimary,
+  },
+  btnBorderedPrimaryLoading: {
+    ...BtnStyles.borderedPrimaryLoading,
   },
   btnBorderedWhite: {
     ...BtnStyles.borderedWhite,

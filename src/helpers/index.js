@@ -39,17 +39,17 @@ export const clearAllData = async () => {
   }
 };
 
-export const alertMsg = (title, msg, dispatch) =>
+export const alertMsg = (title, msg, onPress) =>
   Alert.alert(
     title,
     msg,
     [
       {
         text: 'Cancel',
-        onPress: () => dispatch({ type: CLEAR_MSG }),
+        onPress: () => null,
         style: 'cancel',
       },
-      { text: 'OK', onPress: () => dispatch({ type: CLEAR_MSG }) },
+      { text: 'OK', onPress },
     ],
     { cancelable: false }
   );

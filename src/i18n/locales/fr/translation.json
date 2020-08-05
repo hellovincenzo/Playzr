@@ -75,6 +75,10 @@
       "title": "Oups!",
       "text": "Votre email est incorrect..."
     },
+    "bet": {
+      "title": "FONDS INSUFISANT!",
+      "text": "Vos fonds sont insufisants, ajouter des fonds et réessayer."
+    },
     "signup": {
       "title": "Erreur...",
       "text": "Tout les champs sont requis! Veuillez vérifier à ce que votre adresse email soit valide et que votre mot de passe contienne 6 caractères minimum.",
@@ -95,6 +99,10 @@
     "signup": {
       "title": "FÉLICITATION!",
       "text": "Votre compte a été créé avec succé!"
+    },
+    "bet": {
+      "title": "FÉLICITATION!",
+      "text": "Rechercher d'adverdsaire en cours..."
     }
   },
   "drawer": {
@@ -115,6 +123,10 @@
       "title1": "Parier",
       "heading1": "Choisissez le montant de votre mise.",
       "button1": "Choisir"
+    },
+    "modalAlert": {
+      "title": "Confirmez-vous votre mise ?",
+      "msg": "Souhaitez-vous confirmer votre mise de"
     }
   }
 
