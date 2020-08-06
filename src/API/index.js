@@ -3,6 +3,7 @@ import axios from 'axios';
 import { route } from './constant';
 
 import { GET_BET } from '~/redux/types/getBetType';
+import { GET_PLAYER } from '~/redux/types/playersType';
 import { SIGN_IN, GET_USER } from '~/redux/types/userTypes';
 import { SUCCESS_MSG, ERROR_MSG } from '~/redux/types/messageTypes';
 import { START_FETCHING, STOP_FETCHING } from '~/redux/types/uiTypes';
@@ -45,9 +46,9 @@ export const getMatch = (token, n, dispatch) => {
         token,
       },
     })
-    .then((match) => {
+    .then((players) => {
+      dispatch({ type: GET_PLAYER, players });
       dispatch({ type: STOP_FETCHING });
-      console.log(match.data);
     })
     .catch((err) => {
       if (n === 0) {
@@ -62,12 +63,12 @@ export const auth = (email, password, dispatch) => {
   axios
     .post(route.login, { email, password })
     .then((result) => {
-      dispatch({ type: STOP_FETCHING });
       const { token, user_id } = result.data;
 
       if (token && user_id) {
         getUser(token, user_id, dispatch);
         dispatch({ type: SIGN_IN, token, id: user_id });
+        dispatch({ type: STOP_FETCHING });
       }
     })
     .catch((error) => {

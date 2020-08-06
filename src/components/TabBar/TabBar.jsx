@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { FontAwesome } from '@expo/vector-icons';
 
 // REDUX TYPE
-import { TOGGLE_MODAL } from '~/redux/types/modalType';
+import { TOGGLE_BET_MODAL } from '~/redux/types/modalType';
 
 // COMPONENTS
 import { Heading, Btn } from '~/components/common';
@@ -14,31 +14,17 @@ import { RotateView } from '~/components/RotateView/RotateView';
 // STYLES
 import { Colors } from '~/styles';
 
-// API
-import { matchFinder, getMatch } from '~/API';
-
 const TabBar = ({ isAllowedScreen }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const {
-    user: { token },
-  } = useSelector((state) => state.user);
-
-  const {
     ui: { isLoading },
   } = useSelector((state) => state);
 
-  const { bets } = useSelector((state) => state.bets);
-
   const Tag = isLoading ? RotateView : View;
 
-  const quicMatch = async () => {
-    await matchFinder(token, 10, dispatch);
-    await getMatch(token, 5, dispatch);
-  };
-
-  const toggleModal = () => dispatch({ type: TOGGLE_MODAL });
+  const toggleModal = () => dispatch({ type: TOGGLE_BET_MODAL });
 
   return (
     isAllowedScreen && (

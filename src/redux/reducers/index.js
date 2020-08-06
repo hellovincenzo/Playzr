@@ -6,3 +6,4 @@ export * from './uiReducer';
 export * from './tabReducer';
 export * from './betReducer';
 export * from './modalReducer';
+export * from './playersReducer';

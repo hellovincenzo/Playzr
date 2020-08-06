@@ -8,6 +8,7 @@ import {
   tabReducer,
   betReducer,
   modalReducer,
+  playersReducer,
 } from './reducers';
 
 const rootReducer = combineReducers({
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   tab: tabReducer,
   bets: betReducer,
   modal: modalReducer,
+  players: playersReducer,
 });
 
 export { rootReducer };

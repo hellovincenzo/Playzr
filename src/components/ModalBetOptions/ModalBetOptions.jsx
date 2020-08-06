@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { EvilIcons } from '@expo/vector-icons';
 
 // REDUX TYPE
-import { TOGGLE_MODAL } from '~/redux/types/modalType';
+import { TOGGLE_BET_MODAL } from '~/redux/types/modalType';
 import { SUCCESS_MSG, ERROR_MSG } from '~/redux/types/messageTypes';
 
 // COMPONENTS
@@ -34,14 +34,14 @@ const ModalBetOptions = ({ title, heading, buttonText, bets }) => {
   } = useSelector((state) => state.user);
 
   const {
-    modal: { isModalVisible },
+    modal: { isModalBetVisible },
   } = useSelector((state) => state);
 
   const {
     bets: { selectedBet },
   } = useSelector((state) => state);
 
-  const toggleModal = () => dispatch({ type: TOGGLE_MODAL });
+  const toggleModal = () => dispatch({ type: TOGGLE_BET_MODAL });
 
   const handleOptionPress = (text) =>
     dispatch({ type: 'SELECT_BET', bets, selectedBet: text.bet });
@@ -52,16 +52,19 @@ const ModalBetOptions = ({ title, heading, buttonText, bets }) => {
     dispatch({
       type: balance > 0 ? SUCCESS_MSG : ERROR_MSG,
       title: t(`translation:${balance > 0 ? 'success' : 'error'}.bet.title`),
-      text: [t(`translation:${balance > 0 ? 'success' : 'error'}.bet.text`)],
+      text:
+        balance > 0
+          ? `${t('translation:success.bet.text')}`
+          : `${[t(`translation:error.bet.text`)]}`,
     });
   };
 
   return (
-    isModalVisible && (
+    isModalBetVisible && (
       <Modal
         animationType="slide"
         transparent={false}
-        visible={isModalVisible}
+        visible={isModalBetVisible}
         onRequestClose={() => {
           alert('Modal has been closed.');
         }}
