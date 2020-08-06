@@ -127,6 +127,11 @@
     "modalAlert": {
       "title": "Confirmez-vous votre mise ?",
       "msg": "Souhaitez-vous confirmer votre mise de"
+    },
+    "modalPlayer": {
+      "text1": "Gagnés",
+      "text2": "Perdus",
+      "button1": "Jouer"
     }
   }
 

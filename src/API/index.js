@@ -7,6 +7,7 @@ import { GET_PLAYER } from '~/redux/types/playersType';
 import { SIGN_IN, GET_USER } from '~/redux/types/userTypes';
 import { SUCCESS_MSG, ERROR_MSG } from '~/redux/types/messageTypes';
 import { START_FETCHING, STOP_FETCHING } from '~/redux/types/uiTypes';
+import { TOGGLE_PLAYER_MODAL } from '~/redux/types/modalType';
 
 export const getUser = (token, id, dispatch) =>
   axios
@@ -15,6 +16,13 @@ export const getUser = (token, id, dispatch) =>
     })
     .then((user) => dispatch({ type: GET_USER, user }))
     .catch((error) => console.log(error));
+
+export const getUserCountryFlag = (player1) => {
+  axios
+    .get(`${route.getUserCountryFlag}${player1.country}`)
+    .then((flag) => flag.data[0].flag)
+    .catch((err) => console.log(err));
+};
 
 export const getRank = (token, setRank) =>
   axios
@@ -47,8 +55,17 @@ export const getMatch = (token, n, dispatch) => {
       },
     })
     .then((players) => {
-      dispatch({ type: GET_PLAYER, players });
-      dispatch({ type: STOP_FETCHING });
+      if (players.data.player1 && players.data.player2) {
+        dispatch({ type: GET_PLAYER, players });
+        dispatch({ type: STOP_FETCHING });
+        return dispatch({ type: TOGGLE_PLAYER_MODAL });
+      }
+
+      if (n === 0 && !players.data.player2) {
+        return dispatch({ type: STOP_FETCHING });
+      }
+
+      getMatch(token, n - 1, dispatch);
     })
     .catch((err) => {
       if (n === 0) {

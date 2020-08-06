@@ -127,6 +127,11 @@
     "modalAlert": {
       "title": "Do you confirm your bet ?",
       "msg": "You would you like to confirm your bet of"
+    },
+    "modalPlayer": {
+      "text1": "Won",
+      "text2": "Lost",
+      "button1": "Play"
     }
   }
 }

@@ -10,6 +10,7 @@ import { Layout } from '~/components/Layout/Layout';
 import { OptionSection } from '~/components/OptionSection/OptionSection';
 import { AddMoney } from '~/components/AddMoney/AddMoney';
 import { ModalBetOptions } from '~/components/ModalBetOptions/ModalBetOptions';
+import { ModalPlayer } from '~/components/ModalPlayer/ModalPlayer';
 
 // STYLES
 import { Colors } from '~/styles';
@@ -78,6 +79,7 @@ const Dashboard = ({ navigation }) => {
               font="bold"
               fontSize={23}
               onPress={() => dispatch({ type: 'STOP_FETCHING' })}
+              isLoading={isLoading}
               borderedPrimary
             />
           </Column>
@@ -90,12 +92,14 @@ const Dashboard = ({ navigation }) => {
             isLoading={isLoading}
           />
         </Row>
+
         <ModalBetOptions
           title={t('translation:modal.modalBetOptions.title1')}
           heading={t('translation:modal.modalBetOptions.heading1')}
           buttonText={t('translation:modal.modalBetOptions.button1')}
           bets={bets}
         />
+        <ModalPlayer />
       </Layout>
     )
   );

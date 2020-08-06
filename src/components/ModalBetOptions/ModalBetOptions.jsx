@@ -59,76 +59,72 @@ const ModalBetOptions = ({ title, heading, buttonText, bets }) => {
     });
   };
 
-  return (
-    isModalBetVisible && (
-      <Modal
-        animationType="slide"
-        transparent={false}
-        visible={isModalBetVisible}
-        onRequestClose={() => {
-          alert('Modal has been closed.');
-        }}
-      >
-        <Layout>
-          <Row flex={0.1}>
-            <Column
-              cols={2}
-              style={[styles.borderBottom, styles.headingText]}
-              positionX="flex-end"
-            >
-              <Heading text={title} fontType="bold" />
-            </Column>
-            <Column
-              cols={2}
-              style={[styles.borderBottom, styles.closeIcon]}
-              positionX="flex-end"
-            >
-              <EvilIcons
-                name="close"
-                size={35}
-                color={Colors.colors.black02}
-                onPress={toggleModal}
+  return isModalBetVisible ? (
+    <Modal
+      animationType="slide"
+      transparent={false}
+      visible={isModalBetVisible}
+      onRequestClose={() => {
+        alert('Modal has been closed.');
+      }}
+    >
+      <Layout>
+        <Row flex={0.1}>
+          <Column
+            cols={2}
+            style={[styles.borderBottom, styles.headingText]}
+            positionX="flex-end"
+          >
+            <Heading text={title} fontType="bold" />
+          </Column>
+          <Column
+            cols={2}
+            style={[styles.borderBottom, styles.closeIcon]}
+            positionX="flex-end"
+          >
+            <EvilIcons
+              name="close"
+              size={35}
+              color={Colors.colors.black02}
+              onPress={toggleModal}
+            />
+          </Column>
+        </Row>
+        <Row flex={0.1}>
+          <Column>
+            <Heading text={heading} />
+          </Column>
+        </Row>
+        <Row flex={0.1}>
+          {bets.map((bet) => (
+            <Column key={bet.bet} cols={bets.length}>
+              <ModalOptionButtonItem
+                bet={bet.bet}
+                isSelected={bet.isSelected}
+                handleOptionPress={() => handleOptionPress(bet)}
               />
             </Column>
-          </Row>
-          <Row flex={0.1}>
-            <Column>
-              <Heading text={heading} />
-            </Column>
-          </Row>
-          <Row flex={0.1}>
-            {bets.map((bet) => (
-              <Column key={bet.bet} cols={bets.length}>
-                <ModalOptionButtonItem
-                  bet={bet.bet}
-                  isSelected={bet.isSelected}
-                  handleOptionPress={() => handleOptionPress(bet)}
-                />
-              </Column>
-            ))}
-          </Row>
-          <Row flex={0.1}>
-            <Column>
-              <Btn
-                style={styles.chooseButton}
-                text={buttonText}
-                onPress={() =>
-                  alertMsg(
-                    t('translation:modal.modalAlert.title'),
-                    `${t(
-                      'translation:modal.modalAlert.msg'
-                    )} ${selectedBet}€ ?`,
-                    handleConfirmation
-                  )
-                }
-                borderedPrimary
-              />
-            </Column>
-          </Row>
-        </Layout>
-      </Modal>
-    )
-  );
+          ))}
+        </Row>
+        <Row flex={0.1}>
+          <Column>
+            <Btn
+              style={styles.chooseButton}
+              text={buttonText}
+              onPress={() =>
+                alertMsg(
+                  t('translation:modal.modalAlert.title'),
+                  `${t('translation:modal.modalAlert.msg')} ${selectedBet}€ ?`,
+                  handleConfirmation
+                )
+              }
+              borderedPrimary
+            />
+          </Column>
+        </Row>
+      </Layout>
+    </Modal>
+  ) : null;
 };
 
 const styles = StyleSheet.create({
